@@ -1,8 +1,10 @@
+https://api.collection.cooperhewitt.org/rest/
+
 $( document ).ready(function() {
     console.log( "ready!" );
 
-let queryURL = "http://www.nyartbeat.com/list/event_searchNear?latitude=40.719130&longitude=-73.980000&Schedule=upcoming&SortOrder=mostpopular";
-// (Most popular upcoming events)
+let queryURL = "https://api.collection.cooperhewitt.org/rest/";
+
 
       // Perfoming an AJAX GET request to our queryURL
       $.ajax({
