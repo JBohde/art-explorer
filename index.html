@@ -1,18 +1,165 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Art Explorer</title>
-    <style>
-       #map {
-        height: 400px;
-        width: 100%;
-       }
-    </style>
-  </head>
-  <body>
-    <h1>Here is some cool art!!</h1>
-    <div id="map"></div>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Melissa Capps</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+	<!-- Header section-->
+	<div class="container">
+
+    <!-- Section 1: Navbar-->
+    <nav class="navbar navbar-default">
+
+      <!-- Place Fluid Container in Navbar -->
+      <div class="container-fluid">
+
+        <!-- Designate a navbar heading -->
+        <div class="navbar-header">
+
+          <!-- Collapsible button -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+
+              <!-- navbar button elements-->
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span> <!-- first line -->
+              <span class="icon-bar"></span> <!-- second line -->
+              <span class="icon-bar"></span> <!-- third line -->
+
+            </button>
+          
+        </div>
+
+        <!-- The links of our navbar -->
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><img href="index.html" id="logo" src="assets/images/locart.png"></img></li>
+            </ul>
+            <div class="pos-f-t">
+
+            <!-- this is our code for the collapsible menu bars-->  
+            <!-- <div class="collapse" id="navbarToggleExternalContent">
+              <div class="bg-dark p-4">
+                <h4 class="text-white">Collapsed content</h4>
+                <span class="text-muted">Toggleable via the navbar brand.</span>
+              </div>
+            </div>
+            <nav class="navbar navbar-dark bg-dark">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </nav>
+          </div> -->
+
+<!-- Change these navlinks to collapsed menu bars and social media links -->
+            <ul class="nav navbar-nav navbar-right">
+            	<li class="active"><a href="index.html">About <span class="sr-only">(current)</span></a></li>
+            	<li><a href="Portfolio.html">Portfolio</a></li>
+            	<li><a href="contact.html">Contact</a></li>
+          	</ul>
+        </div>
+        
+      </div>
+      
+    </nav>
+
+
+
+<!-- Main section-->
+
+<!-- a Bootstrap row with columns -->
+    <div class="row">
+
+      <h1 class="page-header">Where are you going??</h1>
+
+     <!-- Change this to GPS search bar -->
+      <div class="col-md-8" class="col-sm-12">
+
+        
+
+      	<div>
+
+
+      		<div class="col-md-8">
+
+            <div class="row">
+
+            		<img src="assets/images/lincoln.jpg" alt="Lincoln" width="25%" class="pull-left" class="img-responsive">
+
+          			<img src="assets/images/baxter.jpg" alt="DebraBaxter" width="25%" class="pull-left" class="img-responsive">
+
+                <img src="assets/images/pharoah.jpg" alt="pharoahhead" width="25%" class="pull-left" class="img-responsive">
+          	</div>
+
+            <div class="row">
+
+                <img src="assets/images/lincoln.jpg" alt="Lincoln" width="25%" class="pull-left" class="img-responsive">
+
+                <img src="assets/images/baxter.jpg" alt="DebraBaxter" width="25%" class="pull-left" class="img-responsive">
+
+                <img src="assets/images/pharoah.jpg" alt="pharoahhead" width="25%" class="pull-left" class="img-responsive">
+            </div>
+
+            <div class="row">
+
+                <img src="assets/images/lincoln.jpg" alt="Lincoln" width="25%" class="pull-left" class="img-responsive">
+
+                <img src="assets/images/baxter.jpg" alt="DebraBaxter" width="25%" class="pull-left" class="img-responsive">
+
+                <img src="assets/images/pharoah.jpg" alt="pharoahhead" width="25%" class="pull-left" class="img-responsive">
+            </div>
+
+          </div>
+      	
+		</div>
+
+
+      </div>
+
+<!-- Aside section-->
+      <div class="sidebar" class="col-md-4 col-sm-12">
+      	<div>
+        	<h2>Twitter/Blog</h2>
+
+          <div>
+        	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+
+      	</div>
+       </div>
+
+    </div>
+	
+<!-- Footer section-->
+<footer class="footer">
+    <div class="container" class="col-md-12">
+      <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="index.html">About <span class="sr-only">(current)</span></a></li>
+              <li><a href="Portfolio.html">FAQ</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+
+      
+    </div>
+  </footer>
+<!--needs to run center justify directly below footer container -->
+  <p class="text-muted" class="text-center">Copyright &copy; 2017 Melissa Capps</p>
+<!-- 
+    <div id="map"></div> -->
     <script src="https://code.jquery.com/jquery-3.2.1.js"
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
     crossorigin="anonymous"></script>
@@ -22,4 +169,7 @@
     </script>
     <script type="text/javascript" src="js/google-maps-api.js"></script>
   </body>
+</html>
+</body>
+
 </html>
