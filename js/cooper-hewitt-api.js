@@ -1,35 +1,48 @@
-https://api.collection.cooperhewitt.org/rest/
-
 $( document ).ready(function() {
-    console.log( "ready!" );
 
-let queryURL = "https://api.collection.cooperhewitt.org/rest/";
+    var config = {
+    apiKey: "AIzaSyDyB-QLzbbYtDMixJ9eqppkC83aOjlNag0",
+    authDomain: "artgalleryproject-92ef9.firebaseapp.com",
+    databaseURL: "https://artgalleryproject-92ef9.firebaseio.com",
+    projectId: "artgalleryproject-92ef9",
+    storageBucket: "",
+    messagingSenderId: "308927903962"
+    };
+    firebase.initializeApp(config);
 
+    const dbRef = firebase.database().ref();
+
+  $("#add-artist").on("click", function(event) {
+    event.preventDefault();
+    const token = "2e2316873bca66e99bd915dbcb769c56";
+    var artist = $("#artist-input").val().trim();;
+    let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist;
 
       // Perfoming an AJAX GET request to our queryURL
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
 
-      // After the data from the AJAX request comes back
-      .then(function(response) {
-
-        // // Saving the image_original_url property
-        //
+    // After the data from the AJAX request comes back
+    .then(function(response) {
+      dbRef.push(response)
+      console.log(response);
+      // var results = response.data;
+      for (var i = 0; i < 3; i++) {
+        var artDiv = $("<div class='item'>");
         // // Creating and storing an image tag
-        // var newImage = $("<img>");
-        //
-        // for ( j = 0; j < response.data.length; j++ ) {
-        //   $(".images").append(
-        //   "<img src='" + response.data[j].images.original_still.url + "'" +
-        //   "alt='" + response.data[j].slug + "'" +
-        //   "data-still='" + response.data[j].images.original.url + "'" +
-        //   "data-animate='" + response.data[j].images.original_still.url + "'" +
-        //   "data-state='animate'" +
-        //   "class='animalImage'>");
-        //   $(".images").append("<p>" + response.data[j].rating + "</p>");
-        // }
-        console.log(response);
-      });
+        var artImage = $("<img>");
+        artImage.attr("src", response.objects[i].images[0].b.url);
+        artImage.attr("class", "art");
+        var galleryLink = $("<a href= 'artGallarySearchResult.html'>");
+        
+        galleryLink.append(artImage);
+        artDiv.prepend(galleryLink);
+        // artDiv.prepent(info);
+        $("#pieces").prepend(artDiv);
+      }
     });
+  });
+
+});
