@@ -1,18 +1,22 @@
 $( document ).ready(function() {
 
-    const clientID = "5aa142c7eb09e38c8cf6";
-    var clientSecret = "76c90b3205f648f568c04b61d7d2241c";
-    // const id = "9939f186d349cb48c3c091e3f0ae8e6c";
-    let queryURL = "https://api.artsy.net/api/tokens/xapp_token?client_id=" + clientID + "&client_secret=" + clientSecret;
+    var config = {
+    apiKey: "AIzaSyDyB-QLzbbYtDMixJ9eqppkC83aOjlNag0",
+    authDomain: "artgalleryproject-92ef9.firebaseapp.com",
+    databaseURL: "https://artgalleryproject-92ef9.firebaseio.com",
+    projectId: "artgalleryproject-92ef9",
+    storageBucket: "",
+    messagingSenderId: "308927903962"
+    };
+    firebase.initializeApp(config);
 
-      // Perfoming an AJAX GET request to our queryURL
-    $.ajax({
-      url: queryURL,
-      method: "POST"
-    })
+    const dbRef = firebase.database().ref();
+    
+    dbRef.on("child_added", function(snapshot) {
 
-    // After the data from the AJAX request comes back
-    .then(function(response) {
-      console.log(response);
+    // Employee Info
+    const newData = snapshot.val();
+    console.log(newData.objects[0].images[0].b.url);
     });
+  
 });
