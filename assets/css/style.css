@@ -19,6 +19,13 @@ body {
   clear: both;
 }
 
+.art {
+  margin: 10px;
+  width: 150px;
+  height: 150px;
+  float: left;
+}
+
 h1,
 h2,
 h3,

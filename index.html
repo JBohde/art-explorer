@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Melissa Capps</title>
+	<title>LocArt</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -79,24 +79,26 @@
     <div class="row">
 
       <h1 class="page-header">Where are you going??</h1>
+      <form id="artist-form">
+        <label for="artist-input">Pick an artist</label><br>
+        <input type="text" id="artist-input"><br>
+        <!-- triggers new artist to be added -->
+        <input id="add-artist" type="submit" value="Submit">
+      </form>
 
      <!-- Change this to GPS search bar -->
-      <div class="col-md-8" class="col-sm-12">
-
-        
-
-      	<div>
-
-
-      		<div class="col-md-8">
+<!--       <div class="col-md-8" class="col-sm-12">
+      <div>
+      		<div class="col-md-8"> -->
 
             <div class="row">
-
-            		<img src="assets/images/lincoln.jpg" alt="Lincoln" width="25%" class="pull-left" class="img-responsive">
+                    <div class="col-md-10" id="pieces">
+                    </div>
+<!--             		<img src="assets/images/lincoln.jpg" alt="Lincoln" width="25%" class="pull-left" class="img-responsive">
 
           			<img src="assets/images/baxter.jpg" alt="DebraBaxter" width="25%" class="pull-left" class="img-responsive">
 
-                <img src="assets/images/pharoah.jpg" alt="pharoahhead" width="25%" class="pull-left" class="img-responsive">
+                <img src="assets/images/pharoah.jpg" alt="pharoahhead" width="25%" class="pull-left" class="img-responsive"> -->
           	</div>
 
             <div class="row">
@@ -137,7 +139,7 @@
           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </div>
-
+  <div class="button" id="testButton">BUTTON</div>
       	</div>
        </div>
 
@@ -157,7 +159,7 @@
     </div>
   </footer>
 <!--needs to run center justify directly below footer container -->
-  <p class="text-muted" class="text-center">Copyright &copy; 2017 Melissa Capps</p>
+  <p class="text-muted" class="text-center">Copyright &copy; 2017 LocArt</p>
 <!-- 
     <div id="map"></div> -->
     <script src="https://code.jquery.com/jquery-3.2.1.js"
@@ -168,6 +170,9 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKpi8njYXwbML-rNKEixnIFQHeEUw6hmM&callback=initMap">
     </script>
     <script type="text/javascript" src="js/google-maps-api.js"></script>
+    <script type="text/javascript" src="js/cooper-hewitt-api.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/nyartbeat.js"></script>
   </body>
 </html>
 </body>
