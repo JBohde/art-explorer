@@ -15,7 +15,7 @@ $( document ).ready(function() {
   $("#add-artist").on("click", function(event) {
     event.preventDefault();
     const token = "2e2316873bca66e99bd915dbcb769c56";
-    var artist = $("#artist-input").val().trim();;
+    var artist = $("#artist-input").val().trim();
     let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist;
 
       // Perfoming an AJAX GET request to our queryURL
@@ -28,7 +28,6 @@ $( document ).ready(function() {
     .then(function(response) {
       dbRef.push(response)
       console.log(response);
-      // var results = response.data;
       for (var i = 0; i < 3; i++) {
         var artDiv = $("<div class='item'>");
         // // Creating and storing an image tag
@@ -39,10 +38,11 @@ $( document ).ready(function() {
         
         galleryLink.append(artImage);
         artDiv.prepend(galleryLink);
-        // artDiv.prepent(info);
-        $("#pieces").prepend(artDiv);
+        $("#artDisplay").prepend(artDiv);
       }
     });
   });
 
 });
+
+
