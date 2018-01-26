@@ -10,12 +10,12 @@ $( document ).ready(function() {
     };
     firebase.initializeApp(config);
 
-    const dbRef = firebase.database().ref();
+    const dbRef = firebase.database().ref("Artist");
 
   $("#add-artist").on("click", function(event) {
     event.preventDefault();
     const token = "2e2316873bca66e99bd915dbcb769c56";
-    var artist = $("#artist-input").val().trim();
+    var artist = "Picasso";
     let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist;
 
       // Perfoming an AJAX GET request to our queryURL
@@ -26,7 +26,7 @@ $( document ).ready(function() {
 
     // After the data from the AJAX request comes back
     .then(function(response) {
-      dbRef.push(response)
+      dbRef.set(response)
       console.log(response);
       for (var i = 0; i < 3; i++) {
         var artDiv = $("<div class='item'>");
@@ -34,11 +34,11 @@ $( document ).ready(function() {
         var artImage = $("<img>");
         artImage.attr("src", response.objects[i].images[0].b.url);
         artImage.attr("class", "art");
-        var galleryLink = $("<a href= 'artGallarySearchResult.html'>");
+        var galleryLink = $("<a href= 'artGallerySearchResult.html'>");
         
         galleryLink.append(artImage);
-        artDiv.prepend(galleryLink);
-        $("#artDisplay").prepend(artDiv);
+        artDiv.append(galleryLink);
+        $("#artDisplay").append(artDiv);
       }
     });
   });
