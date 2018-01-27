@@ -40,6 +40,10 @@ body {
 	height: 30px;  
 }
 
+.profileImg {
+	height: 99px;  
+}
+
 .ArtGalleryImg{
 	height: 140px;
 	width: 140px;
