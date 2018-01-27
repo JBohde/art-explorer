@@ -29,6 +29,7 @@ $( document ).ready(function() {
         artInfo.attr("id", "artInfo");
         artImage.attr("src", newData.objects[i].images[0].b.url);
         artImage.attr("class", "art");
+        artImage.attr("id", "image" + [i]);
         galleryLink.append(artImage);
         artDiv.append(galleryLink);
         artDisplay.append(artDiv);
@@ -55,13 +56,13 @@ $( document ).ready(function() {
       }
     });
     // Sets a event listnener for a new artist
-  $("#add-artist").on("click", function(event) {
+  $("#search-input").on("click", function(event) {
     event.preventDefault();
     $("#showcase").empty();
 
     const token = "2e2316873bca66e99bd915dbcb769c56";
     var artist = $("#artist-input").val().trim();
-    let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist;
+    let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist + "&size=10";
       // Perfoming an AJAX GET request to our queryURL
     $.ajax({
       url: queryURL,
