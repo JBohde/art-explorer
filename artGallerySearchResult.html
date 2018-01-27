@@ -46,8 +46,7 @@
                 <span class="ion-navicon-round"></span>
               </button>
             </li>
-            <li><a href="#"><img src="assets\images\github.png" class="socialImg"></a></li>
-            <li><a href="#"><img src="assets\images\linkedin.png" class="socialImg"></a></li>
+
             <li><a href="#"><img src="assets\images\facebook.png" class="socialImg"></a></li> 
             <li><a href="#"><img src="assets\images\twitter.png" class="socialImg"></a></li> 
           </ul>
@@ -64,19 +63,40 @@
         <h4>COOPER HEWITT SMITHSONIAN DESIGN MUSEUM</h4> 
         <!-- Main section-->
       <div class="row" id= "showcase">
+          <h2>Basic Modal Example</h2>
+        <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismi="modal">&times;</button>
+                  <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
-    <footer>
-      <div class="navbar navbar-default navbar-fixed-bottom">
-        <ul class="nav navbar-nav">
-            <li><a href="#">About</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        <div class="container" id="footer">          
-          &copy;Copyright 2018 Art Work Project
-        </div>
-      </div>      
-    </footer>
+      <footer>
+        <div class="navbar navbar-default navbar-fixed-bottom">
+          <ul class="nav navbar-nav">
+              <li><a href="#">About</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          <div class="container" id="footer">          
+            &copy;Copyright 2018 Art Work Project
+          </div>
+        </div>      
+      </footer>
+  </div>
     
     <!-- App Script -->
     <script src="assets/js/scripts.js"></script>

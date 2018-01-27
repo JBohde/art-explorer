@@ -22,16 +22,62 @@ $( document ).ready(function() {
         var artDisplay = $("<div class=col-lg-2>");
         var artInfo = $("<div class=col-lg-9>");
         var artDiv = $("<div class='item'>");
-        var galleryLink = $("<a href='newData.objects[i].images[0].b.url'>");
+        // var galleryLink = $("<a href=myModal>");
         var artImage = $("<img>");
+
+        // <!-- Trigger the modal with a button -->
+        // var modalButton = $("<button type=btn btn-info btn-lg>"); 
+        // modalButton.attr("class", "button");
+        // modalButton.attr("data-toggle", "modal");
+        // modalButton.attr("data-target", "#myModal>");
+        // modalButton.text("OPEN MODAL");
+        // $("#showcase").append(modalButton);
+       
+       // // <!-- Modal -->
+       //  var myModal = $("<div class='modal fade'>");
+       //  myModal.attr("id", "myModal");
+       //  myModal.attr("role", "dialog");
+
+       //  var modalDialog = $("<div class=modal-dialog>");
+       
+       //  // <!-- Modal content-->
+       //  var modalContent = $("<div class=modal-content>");
+       //  // Creates the header and gives it attributes
+       //  var modalHeader = $("<div class=modal-header>");
+       //  var headerButton =  $("<button type=button>");
+       //  headerButton.attr("class", "close");
+       //  headerButton.attr("data-dismiss", "modal");
+       //  headerButton.text("&times;");
+       //  var headerLabel =  $("<h4 class=modal-title>Modal Header</h4>");
+       //  modalHeader.append(headerButton);
+       //  modalHeader.append(headerLabel);
+       //  // Creates the body and gives it attributes
+       //  var modalBody = $("<div class=modal-body>");
+       //  var bodyText =  $("<p>Some text in the modal.</p>");
+       //  modalBody.append(bodyText);
+       //  // Creates the footer and gives it attributes
+       //  var modalFooter = $("<div class=modal-footer>");
+       //  var footerButton = $("<button type=button>");
+       //  footerButton.attr("class", "btn btn-default");
+       //  footerButton.attr("data-dismiss", "modal>");
+       //  footerButton.text("CLOSE");
+       //  modalFooter.append(footerButton);
+
+       //  modalContent.append(modalHeader);
+       //  modalContent.append(modalBody);
+       //  modalContent.append(modalFooter);
+       //  modalDialog.append(modalContent);
+       //  myModal.append(modalDialog);
+
+       //  container.append(myModal);
 
         artDisplay.attr("id", "artDisplay");
         artInfo.attr("id", "artInfo");
         artImage.attr("src", newData.objects[i].images[0].b.url);
         artImage.attr("class", "art");
         artImage.attr("id", "image" + [i]);
-        galleryLink.append(artImage);
-        artDiv.append(galleryLink);
+        // galleryLink.append(artImage);
+        artDiv.append(artImage);
         artDisplay.append(artDiv);
 
         var artTitle = newData.objects[i].title;
@@ -72,7 +118,12 @@ $( document ).ready(function() {
     .then(function(response) {
       dbRef.set(response);
       console.log(response);
-
     });
   });
+
+  // modalButton.on("click", function(event){
+  //   show(myModal);
+  // });
+
 });
+
