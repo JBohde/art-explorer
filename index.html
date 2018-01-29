@@ -2,6 +2,9 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="3730224195-55mbd9pi11nnqjovf8drh42m1jsmhv6v.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title> Local Art Gallery Search </title>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -38,6 +41,7 @@
               <div class="collapse" id="navbarToggleExternalContent">
               <div>
                 <h4>Menu</h4>
+                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                 <span>Toggleable via the navbar brand.</span>
               </div>
             </div>
@@ -46,8 +50,8 @@
               </button>
             </li>
             <li><a href="https://www.facebook.com/LocArt-Explorer-385449908535019/" target="_blank"><img src="assets\images\facebook.png" class="socialImg"></a></li>
-            <li><a href="https://www.instagram.com/locartexplorer" target="_blank"><img src="assets\images\instagram.png" class="socialImg"></a></li> 
-            <li><a href="https://twitter.com/locartexplorer" target="_blank"><img src="assets\images\twitter.png" class="socialImg"></a></li> 
+            <li><a href="https://www.instagram.com/locartexplorer" target="_blank"><img src="assets\images\instagram.png" class="socialImg"></a></li>
+            <li><a href="https://twitter.com/locartexplorer" target="_blank"><img src="assets\images\twitter.png" class="socialImg"></a></li>
           </ul>
         </div>
       </div>
@@ -88,13 +92,37 @@
               <img src="assets\images\SmithsoniaArtMuseum.jpg" class="ArtGalleryImg">
               <img src="assets\images\SmithsoniaArt2.jpg" class="ArtGalleryImg">
             </div>
+          </div><div class="row featured-locations">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6 list-group">
+              <h4 class="list-group-item-heading">NYC</h4>
+              <button type="button" class="list-group-item">Cooper-Hewitt Smithsonian Design Museum</button>
+              <button type="button" class="list-group-item">The Metropolitan Museum of Art</button>
+              <button type="button" class="list-group-item">The Museum of Modern Art</button>
+              <button type="button" class="list-group-item">Whitney Museum of American Art</button>
+              <button type="button" class="list-group-item">Solomon R. Guggenheim Museum</button>
+              <button type="button" class="list-group-item">Museum of Art and Design</button>
+            </div>
+          </div>
+<div class="row featured-locations">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6 list-group">
+              <h4 class="list-group-item-heading">Tokyo</h4>
+              <button type="button" class="list-group-item">Tokyo Metropolitan Art Museum</button>
+              <button type="button" class="list-group-item">National Museum of Modern Art</button>
+              <button type="button" class="list-group-item">Mori Art Museum</button>
+              <button type="button" class="list-group-item">The National Art Center</button>
+              <button type="button" class="list-group-item">Matsuoka Museum of Art</button>
+            </div>
           </div>
         </div>
         <!-- Aside section-->
         <div class="col-md-3">
           <aside>
             <a class="twitter-timeline" target="_blank" data-width="280" data-height="780" href="https://twitter.com/locartexplorer?ref_src=twsrc%5Etfw">Tweets by locartexplorer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>          
+            </div>
         </aside>
       </div>
 
@@ -114,8 +142,8 @@
 
     <!-- App Script -->
     <script src="assets/js/cooper-hewitt-api.js"></script>
-    <script src="assets/js/google-maps-api.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7OCmLhWPhrWvde0APRJT639nq1APJSJc&libraries=places&callback=initAutocomplete"
-         async defer></script>
+    <!-- <script src="assets/js/google-maps-api.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7OCmLhWPhrWvde0APRJT639nq1APJSJc&libraries=places&callback=initAutocomplete" -->
+         <!-- async defer></script> -->
   </body>
 </html>
