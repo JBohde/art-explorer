@@ -78,7 +78,7 @@ $( document ).ready(function() {
         thisArt = event.currentTarget.name;
         thisSource = event.currentTarget.src
         modalImage.attr("src", thisSource);
-        $(".modal-header").append(thisArt);
+        $(".header-content").append(thisArt);
         $(".modal-body").append(modalImage);
         myModal.attr("class", "modal fade in");
         myModal.attr("style", "display: block");
@@ -90,13 +90,15 @@ $( document ).ready(function() {
         myModal.attr("class", "modal fade out");
         myModal.attr("style", "display: none");
         isModalShowing = false;
+        $(".header-content").empty();
+        $(".modal-body").empty();
     });
 
     // Sets a event listnener for a new artist
     $("#search-input").on("click", function(event) {
       event.preventDefault();
       $("#showcase").empty();
-      $(".modal-header").empty();
+      $(".header-content").empty();
       $(".modal-body").empty();
 
       const token = "2e2316873bca66e99bd915dbcb769c56";
