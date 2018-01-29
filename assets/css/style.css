@@ -27,8 +27,8 @@ body {
 #btnMenu{
 	margin-top: 15px;
 	height: 30px;
-	/*background-color: #2b69ce*/
 }
+
 .PageHeader{
 	text-align: center;
 	margin-bottom: 20px;
@@ -40,8 +40,13 @@ body {
 	height: 30px;  
 }
 
+.form-control {
+	margin-top: 75px
+}
+
 .profileImg {
-	height: 99px;  
+	height: 99px;
+	margin: 0px 20px 20px 0px;  
 }
 
 .ArtGalleryImg{
