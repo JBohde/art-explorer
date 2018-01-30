@@ -49,7 +49,7 @@ $( document ).ready(function() {
         outerRow.append(innerRow);
         $("#showcase").append(outerRow);
         $("#artist-input").val('');
-      }   
+      }
 
       for (var i = 0; i < 3; i++) {
         totalDisplay(i);
