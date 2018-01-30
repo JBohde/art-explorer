@@ -59,55 +59,35 @@
     <div class="container" id="MainContent">
       <div class="PageHeader">
         <form class="form-inline">
-          <input class="form-control" id="artist-input" type="search" placeholder="Where are you going??" aria-label="Search">
-          <button class="btn btn-primary" id="add-artist" type="submit">Search</button>
+          <input class="form-control" type="search" placeholder="Where are you going??" aria-label="Search">
+          <button class="btn btn-primary"  type="submit">Search</button>
         </form>
       </div>
       <div class="row">
-        <!-- Main section-->
-        <div class="col-md-9">
-          <div class="row">
+          <!-- <div class="row featured-locations"> -->
             <div class="col-lg-3">
-              <h4>Cooper Hewitt Smithsonian Design Museum</h4>
-            </div>
-            <div class="col-lg-7" id="artDisplay">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-3">
-             <h4>New York</h4>
-            </div>
-            <div class="col-lg-7">
-              <img src="assets\images\SmithsoniaArt2.jpg" class="ArtGalleryImg">
-              <img src="assets\images\SmithsoniaArt3.jpg" class="ArtGalleryImg">
-              <img src="assets\images\SmithsoniaArtMuseum.jpg" class="ArtGalleryImg">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-3">
-              <h4>Paris</h4>
-            </div>
-            <div class="col-lg-7">
-              <img src="assets\images\SmithsoniaArt3.jpg" class="ArtGalleryImg">
-              <img src="assets\images\SmithsoniaArtMuseum.jpg" class="ArtGalleryImg">
-              <img src="assets\images\SmithsoniaArt2.jpg" class="ArtGalleryImg">
-            </div>
-          </div><div class="row featured-locations">
-            <div class="col-lg-3">
+            <div id="map"></div>
             </div>
             <div class="col-lg-6 list-group">
               <h4 class="list-group-item-heading">NYC</h4>
-              <button type="button" class="list-group-item">Cooper-Hewitt Smithsonian Design Museum</button>
+              <button type="button" class="list-group-item" id="add-artist">Cooper-Hewitt Smithsonian Design Museum</button>
               <button type="button" class="list-group-item">The Metropolitan Museum of Art</button>
               <button type="button" class="list-group-item">The Museum of Modern Art</button>
               <button type="button" class="list-group-item">Whitney Museum of American Art</button>
               <button type="button" class="list-group-item">Solomon R. Guggenheim Museum</button>
               <button type="button" class="list-group-item">Museum of Art and Design</button>
             </div>
-          </div>
-          <div class="row featured-locations">
-            <div class="col-lg-3">
+            <!-- Aside section-->
+            <div class="col-md-3">
+              <aside>
+              <a class="twitter-timeline" target="_blank" data-width="280" data-height="780" href="https://twitter.com/locartexplorer?ref_src=twsrc%5Etfw">Tweets by locartexplorer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+            </aside>
             </div>
+
+          <!-- </div> -->
+          <div class="row featured-locations">
+                        <div class="col-lg-3"></div>
             <div class="col-lg-6 list-group">
               <h4 class="list-group-item-heading">Tokyo</h4>
               <button type="button" class="list-group-item">Tokyo Metropolitan Art Museum</button>
@@ -118,16 +98,9 @@
             </div>
           </div>
         </div>
-        <!-- Aside section-->
-        <div class="col-md-3">
-          <aside>
-            <a class="twitter-timeline" target="_blank" data-width="280" data-height="780" href="https://twitter.com/locartexplorer?ref_src=twsrc%5Etfw">Tweets by locartexplorer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-        </aside>
-      </div>
     </div>
 
-    <div id="map"></div>
+    <!-- <div id="map"></div> -->
     <footer id="footer">
       <div class="navbar navbar-default navbar-fixed-bottom">
         <ul class="nav navbar-nav">

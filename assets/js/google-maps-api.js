@@ -1,23 +1,20 @@
-// This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-      var map;
+ var map;
       var infowindow;
+      var placesList = [];
 
       function initMap() {
-        var NYC = {lat: 40.7128, lng: -74.0060};
+        var NYC = {lat: 40.788895, lng: -73.97668};
 
         map = new google.maps.Map(document.getElementById('map'), {
           center: NYC,
-          zoom: 15
+          zoom: 13
         });
 
         infowindow = new google.maps.InfoWindow();
         var service = new google.maps.places.PlacesService(map);
         service.nearbySearch({
           location: NYC,
-          radius: 500,
+          radius: 2000,
           type: ['museum']
         }, callback);
       }
@@ -26,6 +23,8 @@
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
             createMarker(results[i]);
+            console.log(results[i].name);
+            placesList.push(results[i].name);
           }
         }
       }
@@ -39,8 +38,12 @@
 
         google.maps.event.addListener(marker, 'click', function() {
           infowindow.setContent(place.name);
+
           infowindow.open(map, this);
+
+          console.log(place.name);
         });
-        console.log(results);
-        console.log(status);
       }
+
+
+      console.log(placesList[0]);

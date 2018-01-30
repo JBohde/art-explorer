@@ -4,6 +4,9 @@ body {
 	background-color: #eeede4;
 }
 
+.container {
+  width: 100%;
+}
 .navbar{
 	background-color: #96958c;
 }
@@ -28,10 +31,11 @@ body {
 }
 
 .art {
-	height: 140px;
-	width: 140px;
+	height: 150px;
+	width: 150px;
 	float: left;
-	margin: 0px 20px 20px 0px;
+	margin: 20px;
+  padding: 5px;
 }
 
 #Logo{
@@ -88,8 +92,8 @@ body {
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 50%;
-				width: 50%;
+        height: 500px;
+				width: 300px;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
