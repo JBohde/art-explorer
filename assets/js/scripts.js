@@ -50,10 +50,11 @@ $( document ).ready(function() {
 
         artImage = $("<img>");
         artImage.attr("class", "art");
+        artImage.attr("name", artTitle);
         artImage.attr("data-toggle", "modal");
         artImage.attr("data-target", "#myModal>");
         artImage.attr("src", imgSource);
-        artImage.attr("id", "image" + [i]);
+        artImage.attr("id", "image-" + [i]);
         modalImage = $("<img>");
         modalImage.attr("id", "modal-image");
 
@@ -65,7 +66,7 @@ $( document ).ready(function() {
         outDiv.append(innerRow);
         $("#showcase").append(outDiv);
         $("#artist-input").val('');
-      }   
+      }
 
       for (var i = 0; i < 3; i++) {
         totalDisplay(i);
@@ -74,10 +75,10 @@ $( document ).ready(function() {
       $(".art").on("click", function(event){
         if(isModalShowing) return;
         isModalShowing = true;
-        thisArt = event.currentTarget.artTitle;
+        thisArt = event.currentTarget.name;
         thisSource = event.currentTarget.src
         modalImage.attr("src", thisSource);
-        $(".modal-header").text(thisArt);
+        $(".header-content").append(thisArt);
         $(".modal-body").append(modalImage);
         myModal.attr("class", "modal fade in");
         myModal.attr("style", "display: block");
@@ -86,20 +87,23 @@ $( document ).ready(function() {
 
     // Sets a listener for closing the modal and resetting parameters
     $(".close").on("click", function(event){
-        console.log("Closed!");
         myModal.attr("class", "modal fade out");
         myModal.attr("style", "display: none");
         isModalShowing = false;
+        $(".header-content").empty();
+        $(".modal-body").empty();
     });
 
     // Sets a event listnener for a new artist
     $("#search-input").on("click", function(event) {
       event.preventDefault();
       $("#showcase").empty();
+      $(".header-content").empty();
+      $(".modal-body").empty();
 
       const token = "2e2316873bca66e99bd915dbcb769c56";
       var artist = $("#artist-input").val().trim();
-      let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist + "&size=10";
+      let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist;
       // Perfoming an AJAX GET request to our queryURL
       $.ajax({
         url: queryURL,
@@ -111,6 +115,5 @@ $( document ).ready(function() {
         console.log(response);
       });
     });
-
 });
 

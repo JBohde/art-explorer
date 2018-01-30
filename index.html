@@ -18,10 +18,10 @@
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://bootswatch.com/3/cerulean/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
     <!-- Moment.js Reference -->
    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>-->
@@ -59,55 +59,35 @@
     <div class="container" id="MainContent">
       <div class="PageHeader">
         <form class="form-inline">
-          <input class="form-control" id="artist-input" type="search" placeholder="Where are you going??" aria-label="Search">
-          <button class="btn btn-primary" id="add-artist" type="submit">Search</button>
+          <input class="form-control" type="search" placeholder="Where are you going??" aria-label="Search">
+          <button class="btn btn-primary"  type="submit">Search</button>
         </form>
       </div>
       <div class="row">
-        <!-- Main section-->
-        <div class="col-md-9">
-          <div class="row">
+          <!-- <div class="row featured-locations"> -->
             <div class="col-lg-3">
-              <h4>Cooper Hewitt Smithsonian Design Museum</h4>
-            </div>
-            <div class="col-lg-7" id="artDisplay">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-3">
-             <h4>New York</h4>
-            </div>
-            <div class="col-lg-7">
-              <img src="assets\images\SmithsoniaArt2.jpg" class="ArtGalleryImg">
-              <img src="assets\images\SmithsoniaArt3.jpg" class="ArtGalleryImg">
-              <img src="assets\images\SmithsoniaArtMuseum.jpg" class="ArtGalleryImg">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-3">
-              <h4>Paris</h4>
-            </div>
-            <div class="col-lg-7">
-              <img src="assets\images\SmithsoniaArt3.jpg" class="ArtGalleryImg">
-              <img src="assets\images\SmithsoniaArtMuseum.jpg" class="ArtGalleryImg">
-              <img src="assets\images\SmithsoniaArt2.jpg" class="ArtGalleryImg">
-            </div>
-          </div><div class="row featured-locations">
-            <div class="col-lg-3">
+            <div id="map"></div>
             </div>
             <div class="col-lg-6 list-group">
               <h4 class="list-group-item-heading">NYC</h4>
-              <button type="button" class="list-group-item">Cooper-Hewitt Smithsonian Design Museum</button>
+              <button type="button" class="list-group-item" id="add-artist">Cooper-Hewitt Smithsonian Design Museum</button>
               <button type="button" class="list-group-item">The Metropolitan Museum of Art</button>
               <button type="button" class="list-group-item">The Museum of Modern Art</button>
               <button type="button" class="list-group-item">Whitney Museum of American Art</button>
               <button type="button" class="list-group-item">Solomon R. Guggenheim Museum</button>
               <button type="button" class="list-group-item">Museum of Art and Design</button>
             </div>
-          </div>
-<div class="row featured-locations">
-            <div class="col-lg-3">
+            <!-- Aside section-->
+            <div class="col-md-3">
+              <aside>
+              <a class="twitter-timeline" target="_blank" data-width="280" data-height="780" href="https://twitter.com/locartexplorer?ref_src=twsrc%5Etfw">Tweets by locartexplorer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+            </aside>
             </div>
+
+          <!-- </div> -->
+          <div class="row featured-locations">
+                        <div class="col-lg-3"></div>
             <div class="col-lg-6 list-group">
               <h4 class="list-group-item-heading">Tokyo</h4>
               <button type="button" class="list-group-item">Tokyo Metropolitan Art Museum</button>
@@ -118,22 +98,17 @@
             </div>
           </div>
         </div>
-        <!-- Aside section-->
-        <div class="col-md-3">
-          <aside>
-            <a class="twitter-timeline" target="_blank" data-width="280" data-height="780" href="https://twitter.com/locartexplorer?ref_src=twsrc%5Etfw">Tweets by locartexplorer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-        </aside>
-      </div>
     </div>
+
+    <!-- <div id="map"></div> -->
     <footer id="footer">
-      <div class="navbar navbar-default navbar-fixed-bottom" id="footer">
-        <ul class="nav navbar-nav" id="footer">
+      <div class="navbar navbar-default navbar-fixed-bottom">
+        <ul class="nav navbar-nav">
             <li><a href="about.html">About</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
-        <div class="container" id="footer">
+        <div class="container" class="text-center-align" id="copyright">          
           &copy;Copyright 2018 Art Work Project
         </div>
       </div>
@@ -141,8 +116,8 @@
 
     <!-- App Script -->
     <script src="assets/js/cooper-hewitt-api.js"></script>
-    <!-- <script src="assets/js/google-maps-api.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7OCmLhWPhrWvde0APRJT639nq1APJSJc&libraries=places&callback=initAutocomplete" -->
-         <!-- async defer></script> -->
+    <script src="assets/js/google-maps-api.js"></script>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB61PnqmziwpA7hEr4527uUNH_NB_F1vg8&libraries=places&callback=initMap" async defer></script>
   </body>
 </html>

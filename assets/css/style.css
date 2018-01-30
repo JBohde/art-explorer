@@ -4,12 +4,15 @@ body {
 	background-color: #eeede4;
 }
 
+.container {
+  width: 100%;
+}
 .navbar{
 	background-color: #96958c;
 }
 
 .form-inline {
-	margin-top: 150px;
+  margin-top: 75px;
 }
 
 .modal-dialog {
@@ -18,16 +21,21 @@ body {
   max-width: 960px;
 }
 
+.header-content {
+  float: left;
+}
+
 #modal-image {
   width: 100%;
   height: 100%;
 }
 
 .art {
-	height: 140px;
-	width: 140px;
+	height: 150px;
+	width: 150px;
 	float: left;
-	margin: 0px 20px 20px 0px;
+	margin: 20px;
+  padding: 5px;
 }
 
 #Logo{
@@ -42,8 +50,8 @@ body {
 #btnMenu{
 	margin-top: 15px;
 	height: 30px;
-	/*background-color: #2b69ce*/
 }
+
 .PageHeader{
 	text-align: center;
 	margin-bottom: 20px;
@@ -55,8 +63,13 @@ body {
 	height: 30px;
 }
 
+.form-inline {
+	margin-top: 75px
+}
+
 .profileImg {
-	height: 99px;  
+	height: 99px;
+	margin: 0px 20px 20px 0px;  
 }
 
 .ArtGalleryImg{
@@ -79,8 +92,8 @@ body {
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 50%;
-				width: 50%;
+        height: 500px;
+				width: 300px;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
