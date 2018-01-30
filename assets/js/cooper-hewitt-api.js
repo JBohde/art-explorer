@@ -28,7 +28,7 @@ $( document ).ready(function() {
     .then(function(response) {
       dbRef.set(response)
       console.log(response);
-      for (var i = 0; i < 3; i++) {
+      for (var i = 0; i < 4; i++) {
         var artDiv = $("<div class='item'>");
         // // Creating and storing an image tag
         var artImage = $("<img>");
