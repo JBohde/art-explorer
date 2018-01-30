@@ -35,10 +35,9 @@ $( document ).ready(function() {
         artImage.attr("src", response.objects[i].images[0].b.url);
         artImage.attr("class", "art");
         var galleryLink = $("<a href= 'artGallerySearchResult.html'>");
-        
         galleryLink.append(artImage);
         artDiv.append(galleryLink);
-        $("#artDisplay").append(artDiv);
+        $("#add-artist").append(artDiv);
       }
     });
   });
