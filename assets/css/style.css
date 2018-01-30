@@ -8,6 +8,25 @@ body {
 	background-color: #96958c;
 }
 
+.form-inline {
+  margin-top: 75px;
+}
+
+.modal-dialog {
+  width: auto;
+  height: auto;
+  max-width: 960px;
+}
+
+.header-content {
+  float: left;
+}
+
+#modal-image {
+  width: 100%;
+  height: 100%;
+}
+
 .art {
 	height: 140px;
 	width: 140px;
