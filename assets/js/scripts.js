@@ -66,7 +66,7 @@ $( document ).ready(function() {
         outDiv.append(innerRow);
         $("#showcase").append(outDiv);
         $("#artist-input").val('');
-      }   
+      }
 
       for (var i = 0; i < 3; i++) {
         totalDisplay(i);
@@ -115,6 +115,6 @@ $( document ).ready(function() {
         totalDisplay();
       });
     });
-
+  });
 });
 
