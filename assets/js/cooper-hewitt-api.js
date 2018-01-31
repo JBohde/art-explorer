@@ -1,5 +1,8 @@
 $( document ).ready(function() {
-
+  
+  $(".explore").hide();
+  $(".results-table").hide();
+  
     var config = {
     apiKey: "AIzaSyDyB-QLzbbYtDMixJ9eqppkC83aOjlNag0",
     authDomain: "artgalleryproject-92ef9.firebaseapp.com",
@@ -41,12 +44,6 @@ $( document ).ready(function() {
       }
     });
   });
-
-  // $(document).on("click", ".art", function(event){
-  //   console.log("Hello!");
-  //   $("<a href= 'artGallerySearchResult.html'>");
-  // });
-
 });
 
 

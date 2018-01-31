@@ -28,6 +28,7 @@ $( document ).ready(function() {
 
       function totalDisplay(i) {
         var outDiv = $("<div class=col-md-12>");
+        outDiv.attr("id", "total-display");
         var inDiv = $("<div class=media>");
 
         var artDisplay = $("<div class=media-left>");

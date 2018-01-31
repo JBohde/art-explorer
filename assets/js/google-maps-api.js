@@ -1,6 +1,6 @@
 // This example uses the autocomplete feature of the Google Places API.
-      // It allows the user to find all hotels in a given place, within a given
-      // country. It then displays markers for all the hotels returned,
+      // It allows the user to find museums in a given place, within a given
+      // country. It then displays markers for all the museums returned,
       // with on-click details for each hotel.
 
       // This example requires the Places library. Include the libraries=places
@@ -124,7 +124,7 @@
         var place = autocomplete.getPlace();
         if (place.geometry) {
           map.panTo(place.geometry.location);
-          map.setZoom(11);
+          map.setZoom(12);
           search();
         } else {
           document.getElementById('autocomplete').placeholder = 'Enter a city';
@@ -151,6 +151,8 @@
             fourthResult = googleResults[3].name;
             fifthResult = googleResults[4].name;
             sixthResult = googleResults[5].name;
+            $(".results-table").fadeIn();
+            $(".explore").fadeIn();
             $("#button-one").append(firstResult);
             $("#button-two").append(secondResult);
             $("#button-three").append(thirdResult);
