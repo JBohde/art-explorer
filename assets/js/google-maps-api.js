@@ -154,13 +154,6 @@
             $(".carousel").hide();
             $(".results-table").fadeIn();
             $(".explore").fadeIn();
-            $("#button-one").append(firstResult);
-            $("#button-two").append(secondResult);
-            $("#button-three").append(thirdResult);
-            $("#button-four").append(fourthResult);
-            $("#button-five").append(fifthResult);
-            $("#button-six").append(sixthResult);
-
             // Create a marker for each hotel found, and
             // assign a letter of the alphabetic to each marker icon.
             for (var i = 0; i < results.length; i++) {
@@ -219,9 +212,6 @@
         var results = document.getElementById('results');
         var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
         var markerIcon = MARKER_PATH + markerLetter + '.png';
-        // var artDisplay = document.createElement('div');
-        // artDisplay.setAttribute('id', 'art-display');
-        // results.appendChild(artDisplay);
         var tr = document.createElement('tr');
         tr.setAttribute('id', "museum-" + i);
         tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
