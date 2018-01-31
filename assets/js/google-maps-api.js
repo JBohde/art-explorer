@@ -106,7 +106,7 @@
         var place = autocomplete.getPlace();
         if (place.geometry) {
           map.panTo(place.geometry.location);
-          map.setZoom(15);
+          map.setZoom(11);
           search();
         } else {
           document.getElementById('autocomplete').placeholder = 'Enter a city';
@@ -117,7 +117,7 @@
       function search() {
         var search = {
           bounds: map.getBounds(),
-          types: ['museum']
+          types: ['art_gallery', 'museum']
         };
 
         places.nearbySearch(search, function(results, status) {
