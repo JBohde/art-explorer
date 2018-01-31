@@ -69,6 +69,19 @@
         }
       };
 
+      var request = {
+        placeId: 'ChIJsT8qSaJYwokR-m20OGJUKCA'
+      };
+      var cooperHewitt;
+      var googleResults = [];
+
+      function callback(place, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          cooperHewitt = place;
+          console.log(cooperHewitt);
+        }
+      }
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: countries['us'].zoom,
@@ -88,11 +101,11 @@
         autocomplete = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */ (
                 document.getElementById('autocomplete')), {
-              types: ['(cities)'],
+              types: ['(regions)'],
               componentRestrictions: countryRestrict
             });
         places = new google.maps.places.PlacesService(map);
-
+        places.getDetails(request, callback);
         autocomplete.addListener('place_changed', onPlaceChanged);
 
         // Add a DOM event listener to react when the user selects a country.
@@ -117,13 +130,17 @@
       function search() {
         var search = {
           bounds: map.getBounds(),
-          types: ['art_gallery', 'museum']
+          types: ['museum']
         };
 
         places.nearbySearch(search, function(results, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             clearResults();
             clearMarkers();
+            googleResults = results;
+            console.log(googleResults);
+            console.log(cooperHewitt);
+            googleResults.unshift(cooperHewitt);
             // Create a marker for each hotel found, and
             // assign a letter of the alphabetic to each marker icon.
             for (var i = 0; i < results.length; i++) {
@@ -138,7 +155,6 @@
               // If the user clicks a hotel marker, show the details of that hotel
               // in an info window.
               markers[i].placeResult = results[i];
-              console.log(results[i]);
               google.maps.event.addListener(markers[i], 'click', showInfoWindow);
               setTimeout(dropMarker(i), i * 100);
               addResult(results[i], i);
