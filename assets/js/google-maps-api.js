@@ -151,6 +151,7 @@
             fourthResult = googleResults[3].name;
             fifthResult = googleResults[4].name;
             sixthResult = googleResults[5].name;
+            $(".carousel").hide();
             $(".results-table").fadeIn();
             $(".explore").fadeIn();
             $("#button-one").append(firstResult);
