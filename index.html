@@ -30,22 +30,22 @@
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">
-              <img id="Logo" src="assets/images/LocArt.png">
-            </a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">
+            <img id="Logo" src="assets/images/LocArt.png">
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li>
               <div class="collapse" id="navbarToggleExternalContent">
-              <div>
-                <h4>Menu</h4>
-                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                <span>Toggleable via the navbar brand.</span>
+                <div>
+                  <h4>Menu</h4>
+                  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                  <span>Toggleable via the navbar brand.</span>
+                </div>
               </div>
-            </div>
-            <button class="navbar-toggler" id="btnMenu" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="navbar-toggler" id="btnMenu" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="ion-navicon-round"></span>
               </button>
             </li>
@@ -82,66 +82,67 @@
             </select>
           </div>
           <div id="locationField">
-            <input id="autocomplete" placeholder="Enter a city" type="text" />
+            <input id="autocomplete" placeholder="Where are you going?" type="text" />
           </div>
-          <input class="form-control" id="artist-input" type="search" placeholder="Where are you going??" aria-label="Search">
-          <button class="btn btn-primary" id="add-artist" type="submit">Search</button>
         </form>
       </div>
       <div class="row">
         <!-- Main section-->
-        <div class="col-md-9">
-          <di
-            <div class="row featured-locations">
-              <!-- this is where the search list is rendered -->
-              <div class="col-lg-6 list-group">
-                <h4 class="list-group-item-heading"></h4>
-              </div>
-              </div>
+        <div class="col-md-4">
+          <div id="map"></div>
+        </div>
+        <div class="col-md-4 list-group">
+          <div id="listing">
+            <table id="resultsTable">
+              <tbody id="results"></tbody>
+            </table>
+          </div>
+          <div style="display: none">
+            <div id="info-content">
+              <table>
+                <tr id="iw-url-row" class="iw_table_row">
+                  <td id="iw-icon" class="iw_table_icon"></td>
+                  <td id="iw-url"></td>
+                </tr>
+                <tr id="iw-address-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Address:</td>
+                  <td id="iw-address"></td>
+                </tr>
+                 <tr id="iw-phone-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Telephone:</td>
+                  <td id="iw-phone"></td>
+                </tr>
+                <tr id="iw-rating-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Rating:</td>
+                  <td id="iw-rating"></td>
+                </tr>
+                <tr id="iw-website-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Website:</td>
+                  <td id="iw-website"></td>
+                </tr>
+                <tr id="iw-website-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Options:</td>
+                  <td id="iw-buttons"><button type="button" name="button" class="btn btn-info">Photos</button><button type="button" name="button" class="btn btn-success">Add to list</button></td>
+                </tr>
+              </table>
+            </div>
           </div>
         </div>
+
+        <!-- Aside section-->
+        <div class="col-md-3">
+          <aside>
+            <a class="twitter-timeline" target="_blank" data-width="280" data-height="780" href="https://twitter.com/locartexplorer?ref_src=twsrc%5Etfw">Tweets by locartexplorer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </aside>
+        </div>
     </div>
-
-
-
-
-    <div id="map"></div>
-
-    <div id="listing">
-      <table id="resultsTable">
-        <tbody id="results"></tbody>
-      </table>
+    <div class="row">
+      <div class="col-md-12" id="photos"></div>
     </div>
-
-    <div style="display: none">
-      <div id="info-content">
-        <table>
-          <tr id="iw-url-row" class="iw_table_row">
-            <td id="iw-icon" class="iw_table_icon"></td>
-            <td id="iw-url"></td>
-          </tr>
-          <tr id="iw-address-row" class="iw_table_row">
-            <td class="iw_attribute_name">Address:</td>
-            <td id="iw-address"></td>
-          </tr>
-          <tr id="iw-phone-row" class="iw_table_row">
-            <td class="iw_attribute_name">Telephone:</td>
-            <td id="iw-phone"></td>
-          </tr>
-          <tr id="iw-rating-row" class="iw_table_row">
-            <td class="iw_attribute_name">Rating:</td>
-            <td id="iw-rating"></td>
-          </tr>
-          <tr id="iw-website-row" class="iw_table_row">
-            <td class="iw_attribute_name">Website:</td>
-            <td id="iw-website"></td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    <button type="button" name="button" id="flickr">Flickr</button>
     <footer id="footer">
       <div class="navbar navbar-default navbar-fixed-bottom">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" id="footernav">
             <li><a href="about.html">About</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -155,7 +156,7 @@
     <!-- App Script -->
     <script src="assets/js/cooper-hewitt-api.js"></script>
     <script src="assets/js/google-maps-api.js"></script>
-    <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB61PnqmziwpA7hEr4527uUNH_NB_F1vg8&libraries=places&callback=initMap" async defer></script>
+    <script type="text/javascript" src="assets/js/flickr.js"></script>
   </body>
 </html>
