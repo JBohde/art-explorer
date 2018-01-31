@@ -12,7 +12,7 @@ $( document ).ready(function() {
 
     const dbRef = firebase.database().ref("Artist");
 
-  $("#museum-choice").on("click", function(event) {
+  $("#button-one").on("click", function(event) {
     event.preventDefault();
     const token = "2e2316873bca66e99bd915dbcb769c56";
     var artist = "Picasso";

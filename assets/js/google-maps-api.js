@@ -74,11 +74,16 @@
       };
       var cooperHewitt;
       var googleResults = [];
+      var firstResult;
+      var secondResult;
+      var thirdResult;
+      var fourthResult;
+      var fifthResult;
+      var sixthReslt;
 
       function callback(place, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           cooperHewitt = place;
-          console.log(cooperHewitt);
         }
       }
 
@@ -138,9 +143,21 @@
             clearResults();
             clearMarkers();
             googleResults = results;
-            console.log(googleResults);
-            console.log(cooperHewitt);
             googleResults.unshift(cooperHewitt);
+            console.log(googleResults);
+            firstResult = googleResults[0].name;
+            secondResult = googleResults[1].name;
+            thirdResult = googleResults[2].name;
+            fourthResult = googleResults[3].name;
+            fifthResult = googleResults[4].name;
+            sixthResult = googleResults[5].name;
+            $("#button-one").append(firstResult);
+            $("#button-two").append(secondResult);
+            $("#button-three").append(thirdResult);
+            $("#button-four").append(fourthResult);
+            $("#button-five").append(fifthResult);
+            $("#button-six").append(sixthResult);
+
             // Create a marker for each hotel found, and
             // assign a letter of the alphabetic to each marker icon.
             for (var i = 0; i < results.length; i++) {
