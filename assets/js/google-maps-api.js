@@ -219,8 +219,11 @@
         var results = document.getElementById('results');
         var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
         var markerIcon = MARKER_PATH + markerLetter + '.png';
-
+        // var artDisplay = document.createElement('div');
+        // artDisplay.setAttribute('id', 'art-display');
+        // results.appendChild(artDisplay);
         var tr = document.createElement('tr');
+        tr.setAttribute('id', "museum-" + i);
         tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
         tr.onclick = function() {
           google.maps.event.trigger(markers[i], 'click');

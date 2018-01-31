@@ -15,11 +15,12 @@ $( document ).ready(function() {
 
     const dbRef = firebase.database().ref("Artist");
 
-  $("#button-one").on("click", function(event) {
+  $("#resultsTable").on("click", function(event) {
+    console.log("Hello");
     event.preventDefault();
     const token = "2e2316873bca66e99bd915dbcb769c56";
     var artist = "Picasso";
-    let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist;
+    let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.people.getObjects&access_token=" + token + "&person=" + artist;
 
       // Perfoming an AJAX GET request to our queryURL
     $.ajax({

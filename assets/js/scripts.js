@@ -25,7 +25,7 @@ $( document ).ready(function() {
     dbRef.on("value", function(snapshot) {
 
       const newData = snapshot.val();
-
+      console.log(newData);
       function totalDisplay(i) {
         var outDiv = $("<div class=col-md-12>");
         outDiv.attr("id", "total-display");
@@ -105,7 +105,7 @@ $( document ).ready(function() {
 
       const token = "2e2316873bca66e99bd915dbcb769c56";
       var artist = $("#artist-input").val().trim();
-      let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist;
+      let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.people.getObjects&access_token="+ token + "&person=" + artist;
       // Perfoming an AJAX GET request to our queryURL
       $.ajax({
         url: queryURL,
@@ -118,4 +118,3 @@ $( document ).ready(function() {
       });
     });
 });
-

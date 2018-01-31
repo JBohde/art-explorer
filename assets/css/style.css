@@ -27,13 +27,17 @@ html, body {
   float: left;
 }
 
-.explore {
-  color: white;
-}
-
 #carousel-img {
   width: 500px;
   height: 500px;
+}
+
+#listing {
+  border-radius: 1em;
+}
+td {
+  padding: 5px;
+  cursor: pointer;
 }
 
 #modal-image {
@@ -45,7 +49,7 @@ html, body {
 	height: 150px;
 	width: 150px;
 	float: left;
-  margin: 5px 0px 5px 50px;
+  margin: 8px;;
   cursor: pointer;
 }
 
