@@ -88,6 +88,7 @@
       </div>
       <div class="row">
         <!-- Main section-->
+
         <div class="col-md-4 google-map">
           <div id="map"></div>
         </div>
@@ -96,6 +97,7 @@
             <div id="art-display"></div>
           </div>
           <div class="row">
+
           <div id="listing">
             <table id="resultsTable">
               <tbody id="results"></tbody>
@@ -123,6 +125,10 @@
                 <tr id="iw-website-row" class="iw_table_row">
                   <td class="iw_attribute_name">Website:</td>
                   <td id="iw-website"></td>
+                </tr>
+                <tr id="iw-website-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Options:</td>
+                  <td id="iw-buttons"><button type="button" name="button" class="btn btn-info">Photos</button><button type="button" name="button" class="btn btn-success">Add to list</button></td>
                 </tr>
               </table>
             </div>
@@ -191,18 +197,11 @@
             <a class="twitter-timeline" target="_blank" data-width="280" data-height="780" href="https://twitter.com/locartexplorer?ref_src=twsrc%5Etfw">Tweets by locartexplorer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </aside>
         </div>
- <!--        <div class="row featured-locations">
-          <div class="col-lg-3"></div>
-          <div class="col-lg-6 list-group">
-            <h4 class="list-group-item-heading">Tokyo</h4>
-            <button type="button" class="list-group-item">Tokyo Metropolitan Art Museum</button>
-            <button type="button" class="list-group-item">National Museum of Modern Art</button>
-            <button type="button" class="list-group-item">Mori Art Museum</button>
-            <button type="button" class="list-group-item">The National Art Center</button>
-            <button type="button" class="list-group-item">Matsuoka Museum of Art</button>
-          </div>
-        </div> -->
     </div>
+    <div class="row">
+      <div class="col-md-12" id="photos"></div>
+    </div>
+    <button type="button" name="button" id="flickr">Flickr</button>
     <footer id="footer">
       <div class="navbar navbar-default navbar-fixed-bottom">
         <ul class="nav navbar-nav" id="footernav">
@@ -219,7 +218,7 @@
     <!-- App Script -->
     <script src="assets/js/cooper-hewitt-api.js"></script>
     <script src="assets/js/google-maps-api.js"></script>
-    <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB61PnqmziwpA7hEr4527uUNH_NB_F1vg8&libraries=places&callback=initMap" async defer></script>
+    <script type="text/javascript" src="assets/js/flickr.js"></script>
   </body>
 </html>
