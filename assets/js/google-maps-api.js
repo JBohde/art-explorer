@@ -8,14 +8,14 @@
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-var map, places, infoWindow;
-var markers = [];
-var autocomplete;
-var countryRestrict = {'country': 'us'};
-var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
-var hostnameRegexp = new RegExp('^https?://.+?/');
+  var map, places, infoWindow;
+  var markers = [];
+  var autocomplete;
+  var countryRestrict = {'country': 'us'};
+  var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
+  var hostnameRegexp = new RegExp('^https?://.+?/');
 
-      var countries = {
+  var countries = {
         'au': {
           center: {lat: -25.3, lng: 133.8},
           zoom: 4
@@ -68,38 +68,25 @@ var hostnameRegexp = new RegExp('^https?://.+?/');
           center: {lat: 54.8, lng: -4.6},
           zoom: 5
         }
-      };
+  };
 
-      var request = {
-        placeId: 'ChIJsT8qSaJYwokR-m20OGJUKCA'
-      };
-      var cooperHewitt;
-      var googleResults = [];
-      var firstResult;
-      var secondResult;
-      var thirdResult;
-      var fourthResult;
-      var fifthResult;
-      var sixthReslt;
+  var request = {
+    placeId: 'ChIJsT8qSaJYwokR-m20OGJUKCA'
+  };
+  var cooperHewitt;
+  var googleResults = [];
 
-      function callback(place, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-          cooperHewitt = place;
-        }
-      }
+  function callback(place, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      cooperHewitt = place;
+    }
+  }
+  infoWindow = new google.maps.InfoWindow({
+    content: document.getElementById('info-content')
+  });
 
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: countries['us'].zoom,
-          center: countries['us'].center,
-          mapTypeControl: false,
-          panControl: false,
-          zoomControl: false,
-          streetViewControl: false
-        });
-
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
     zoom: countries['us'].zoom,
     center: countries['us'].center,
     mapTypeControl: false,
@@ -108,104 +95,62 @@ function initMap() {
     streetViewControl: false
   });
 
-        // Create the autocomplete object and associate it with the UI input control.
-        // Restrict the search to the default country, and to place type "cities".
-        autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */ (
-                document.getElementById('autocomplete')), {
-              types: ['(regions)'],
-              componentRestrictions: countryRestrict
-            });
-        places = new google.maps.places.PlacesService(map);
-        places.getDetails(request, callback);
-        autocomplete.addListener('place_changed', onPlaceChanged);
+  // Create the autocomplete object and associate it with the UI input control.
+  // Restrict the search to the default country, and to place type "cities".
+  autocomplete = new google.maps.places.Autocomplete(
+       /** @type {!HTMLInputElement} */ (
+           document.getElementById('autocomplete')), {
+        types: ['(regions)'],
+        componentRestrictions: countryRestrict
+      });
+  places = new google.maps.places.PlacesService(map);
+  places.getDetails(request, callback);
+  autocomplete.addListener('place_changed', onPlaceChanged);
 
   // Add a DOM event listener to react when the user selects a country.
   document.getElementById('country').addEventListener(
-      'change', setAutocompleteCountry);
-}
-
-      // When the user selects a city, get the place details for the city and
-      // zoom the map in on the city.
-      function onPlaceChanged() {
-        var place = autocomplete.getPlace();
-        if (place.geometry) {
-          map.panTo(place.geometry.location);
-          map.setZoom(12);
-          search();
-        } else {
-          document.getElementById('autocomplete').placeholder = 'Enter a city';
-        }
-      }
-
-// When the user selects a city, get the place details for the city and
-// zoom the map in on the city.
-function onPlaceChanged() {
-  var place = autocomplete.getPlace();
-  if (place.geometry) {
-    map.panTo(place.geometry.location);
-    map.setZoom(14);
-    search();
-  } else {
-    document.getElementById('autocomplete').placeholder = 'Enter a city';
+    'change', setAutocompleteCountry);
   }
-}
 
+  // When the user selects a city, get the place details for the city and
+  // zoom the map in on the city.
+  function onPlaceChanged() {
+    var place = autocomplete.getPlace();
+    if (place.geometry) {
+      map.panTo(place.geometry.location);
+      map.setZoom(12);
+      search();
+    } else {
+      document.getElementById('autocomplete').placeholder = 'Enter a city';
+    }
+  }
 
-// Search for museums in the selected city, within the viewport of the map.
-function search() {
-  var search = {
+  // Search for museums in the selected city, within the viewport of the map.
+  function search() {
+    var search = {
     bounds: map.getBounds(),
     types: ['museum']
   };
 
-        places.nearbySearch(search, function(results, status) {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            clearResults();
-            clearMarkers();
-            googleResults = results;
-            googleResults.unshift(cooperHewitt);
-            console.log(googleResults);
-            firstResult = googleResults[0].name;
-            secondResult = googleResults[1].name;
-            thirdResult = googleResults[2].name;
-            fourthResult = googleResults[3].name;
-            fifthResult = googleResults[4].name;
-            sixthResult = googleResults[5].name;
-            $(".carousel").hide();
-            $(".results-table").fadeIn();
-            $(".explore").fadeIn();
-            // Create a marker for each hotel found, and
-            // assign a letter of the alphabetic to each marker icon.
-            for (var i = 0; i < results.length; i++) {
-              var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-              var markerIcon = MARKER_PATH + markerLetter + '.png';
-              // Use marker animation to drop the icons incrementally on the map.
-              markers[i] = new google.maps.Marker({
-                position: results[i].geometry.location,
-                animation: google.maps.Animation.DROP,
-                icon: markerIcon
-              });
-              // If the user clicks a hotel marker, show the details of that hotel
-              // in an info window.
-              markers[i].placeResult = results[i];
-              google.maps.event.addListener(markers[i], 'click', showInfoWindow);
-              setTimeout(dropMarker(i), i * 100);
-              addResult(results[i], i);
-            }
-          }
-        });
-      }
-
-
-  places.nearbySearch(search, function(results, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      clearResults();
-      clearMarkers();
-      // Create a marker for each museum found, and
-      // assign a letter of the alphabetic to each marker icon.
-      for (var i = 0; i < results.length; i++) {
-        if ( i < 9 ) {
+    places.nearbySearch(search, function(results, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        clearResults();
+        clearMarkers();
+        googleResults = results;
+        googleResults.unshift(cooperHewitt);
+        console.log(googleResults);
+        firstResult = googleResults[0].name;
+        secondResult = googleResults[1].name;
+        thirdResult = googleResults[2].name;
+        fourthResult = googleResults[3].name;
+        fifthResult = googleResults[4].name;
+        sixthResult = googleResults[5].name;
+        $(".carousel").hide();
+        $(".results-table").fadeIn();
+        $(".explore").fadeIn();
+        // Create a marker for each hotel found, and
+        // assign a letter of the alphabetic to each marker icon.
+        for (var i = 0; i < results.length; i++) {
           var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
           var markerIcon = MARKER_PATH + markerLetter + '.png';
           // Use marker animation to drop the icons incrementally on the map.
@@ -214,61 +159,59 @@ function search() {
             animation: google.maps.Animation.DROP,
             icon: markerIcon
           });
-          // If the user clicks a museum marker, show the details of that museum
+          // If the user clicks a hotel marker, show the details of that hotel
           // in an info window.
           markers[i].placeResult = results[i];
-          console.log(results[i]);
           google.maps.event.addListener(markers[i], 'click', showInfoWindow);
           setTimeout(dropMarker(i), i * 100);
           addResult(results[i], i);
         }
       }
-    }
-  });
-}
+    });
+  }
 
-function clearMarkers() {
-  for (var i = 0; i < markers.length; i++) {
-    if (markers[i]) {
+  function clearMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+      if (markers[i]) {
       markers[i].setMap(null);
     }
   }
   markers = [];
-}
-
-// Set the country restriction based on user input.
-// Also center and zoom the map on the given country.
-function setAutocompleteCountry() {
-  var country = document.getElementById('country').value;
-  if (country == 'all') {
-    autocomplete.setComponentRestrictions({'country': []});
-    map.setCenter({lat: 15, lng: 0});
-    map.setZoom(2);
-  } else {
-    autocomplete.setComponentRestrictions({'country': country});
-    map.setCenter(countries[country].center);
-    map.setZoom(countries[country].zoom);
   }
-  clearResults();
-  clearMarkers();
-}
 
-function dropMarker(i) {
-  return function() {
+  // Set the country restriction based on user input.
+  // Also center and zoom the map on the given country.
+  function setAutocompleteCountry() {
+    var country = document.getElementById('country').value;
+    if (country == 'all') {
+      autocomplete.setComponentRestrictions({'country': []});
+      map.setCenter({lat: 15, lng: 0});
+      map.setZoom(2);
+    } else {
+      autocomplete.setComponentRestrictions({'country': country});
+      map.setCenter(countries[country].center);
+      map.setZoom(countries[country].zoom);
+    }
+    clearResults();
+    clearMarkers();
+  }
+
+  function dropMarker(i) {
+    return function() {
     markers[i].setMap(map);
-  };
-}
+    };
+  }
 
-      function addResult(result, i) {
-        var results = document.getElementById('results');
-        var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-        var markerIcon = MARKER_PATH + markerLetter + '.png';
-        var tr = document.createElement('tr');
-        tr.setAttribute('id', "museum-" + i);
-        tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
-        tr.onclick = function() {
-          google.maps.event.trigger(markers[i], 'click');
-        };
+  function addResult(result, i) {
+    var results = document.getElementById('results');
+    var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
+    var markerIcon = MARKER_PATH + markerLetter + '.png';
+    var tr = document.createElement('tr');
+    tr.setAttribute('id', "museum-" + i);
+    tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
+    tr.onclick = function() {
+      google.maps.event.trigger(markers[i], 'click');
+    };
 
 
   var btn = document.createElement('button');
@@ -289,20 +232,20 @@ function dropMarker(i) {
   btn.appendChild(iconTd);
   btn.appendChild(nameTd);
   results.appendChild(btn);
-}
+ }
 
-function clearResults() {
-  var results = document.getElementById('results');
-  while (results.childNodes[0]) {
+  function clearResults() {
+    var results = document.getElementById('results');
+    while (results.childNodes[0]) {
     results.removeChild(results.childNodes[0]);
+    }
   }
-}
 
-// Get the place details for a museum. Show the information in an info window,
-// anchored on the marker for the museum that the user selected.
-function showInfoWindow() {
-  var marker = this;
-  places.getDetails({placeId: marker.placeResult.place_id},
+  // Get the place details for a museum. Show the information in an info window,
+  // anchored on the marker for the museum that the user selected.
+  function showInfoWindow() {
+    var marker = this;
+    places.getDetails({placeId: marker.placeResult.place_id},
       function(place, status) {
         if (status !== google.maps.places.PlacesServiceStatus.OK) {
           return;
@@ -310,107 +253,54 @@ function showInfoWindow() {
         infoWindow.open(map, marker);
         buildIWContent(place);
       });
-}
+  }
 
-// Load the place information into the HTML elements used by the info window.
-function buildIWContent(place) {
-  document.getElementById('iw-icon').innerHTML = '<img class="museumIcon" ' +
+  // Load the place information into the HTML elements used by the info window.
+  function buildIWContent(place) {
+    document.getElementById('iw-icon').innerHTML = '<img class="museumIcon" ' +
       'src="' + place.icon + '"/>';
-  document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
+    document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
       '">' + place.name + '</a></b>';
-  document.getElementById('iw-address').textContent = place.vicinity;
+    document.getElementById('iw-address').textContent = place.vicinity;
 
-  if (place.formatted_phone_number) {
+    if (place.formatted_phone_number) {
     document.getElementById('iw-phone-row').style.display = '';
     document.getElementById('iw-phone').textContent =
         place.formatted_phone_number;
-  } else {
+    } else {
     document.getElementById('iw-phone-row').style.display = 'none';
-  }
+    }
 
-  // Assign a five-star rating to the museum, using a black star ('&#10029;')
-  // to indicate the rating the museum has earned, and a white star ('&#10025;')
-  // for the rating points not achieved.
-  if (place.rating) {
-    var ratingHtml = '';
-    for (var i = 0; i < 5; i++) {
-      if (place.rating < (i + 0.5)) {
-        ratingHtml += '&#10025;';
-      } else {
+    // Assign a five-star rating to the museum, using a black star ('&#10029;')
+    // to indicate the rating the museum has earned, and a white star ('&#10025;')
+    // for the rating points not achieved.
+    if (place.rating) {
+      var ratingHtml = '';
+      for (var i = 0; i < 5; i++) {
+        if (place.rating < (i + 0.5)) {
+          ratingHtml += '&#10025;';
+        } else {
         ratingHtml += '&#10029;';
+        }
+      document.getElementById('iw-rating-row').style.display = '';
+      document.getElementById('iw-rating').innerHTML = ratingHtml;
+    }
+    } else {
+      document.getElementById('iw-rating-row').style.display = 'none';
+    }
+
+    // The regexp isolates the first part of the URL (domain plus subdomain)
+    // to give a short URL for displaying in the info window.
+    if (place.website) {
+      var fullUrl = place.website;
+      var website = hostnameRegexp.exec(place.website);
+      if (website === null) {
+        website = 'http://' + place.website + '/';
+        fullUrl = website;
       }
-    document.getElementById('iw-rating-row').style.display = '';
-    document.getElementById('iw-rating').innerHTML = ratingHtml;
+      document.getElementById('iw-website-row').style.display = '';
+      document.getElementById('iw-website').textContent = website;
+    } else {
+      document.getElementById('iw-website-row').style.display = 'none';
     }
-  } else {
-    document.getElementById('iw-rating-row').style.display = 'none';
   }
-
-  // The regexp isolates the first part of the URL (domain plus subdomain)
-  // to give a short URL for displaying in the info window.
-  if (place.website) {
-    var fullUrl = place.website;
-    var website = hostnameRegexp.exec(place.website);
-    if (website === null) {
-      website = 'http://' + place.website + '/';
-      fullUrl = website;
-    }
-    document.getElementById('iw-website-row').style.display = '';
-    document.getElementById('iw-website').textContent = website;
-  } else {
-    document.getElementById('iw-website-row').style.display = 'none';
-  }
-}
-
-
-// This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-      //
-      // var map;
-      // var infowindow;
-      // var placesList = ["cooperhewitt"];
-      //
-      // function initMap() {
-      //   var NYC = {lat: 40.788895, lng: -73.97668};
-      //
-      //   map = new google.maps.Map(document.getElementById('map'), {
-      //     center: NYC,
-      //     zoom: 13
-      //   });
-      //
-      //   infowindow = new google.maps.InfoWindow();
-      //   var service = new google.maps.places.PlacesService(map);
-      //   service.nearbySearch({
-      //     location: NYC,
-      //     radius: 2000,
-      //     type: ['museum']
-      //   }, callback);
-      // }
-      //
-      // function callback(results, status) {
-      //   if (status === google.maps.places.PlacesServiceStatus.OK) {
-      //     for (var i = 0; i < results.length; i++) {
-      //       createMarker(results[i]);
-      //         $(".list-group").append("<button type='button' class='list-group-item'>" + results[i].name + "</button>");
-      //       console.log(results[i].name);
-      //       placesList.push(results[i].name);
-      //     }
-      //   }
-      // }
-      //
-      // function createMarker(place) {
-      //   var placeLoc = place.geometry.location;
-      //   var marker = new google.maps.Marker({
-      //     map: map,
-      //     position: place.geometry.location
-      //   });
-      //
-      //   google.maps.event.addListener(marker, 'click', function() {
-      //     infowindow.setContent(place.name);
-      //
-      //     infowindow.open(map, this);
-      //h
-      //     console.log(place.name);
-      //   });
-      // }
