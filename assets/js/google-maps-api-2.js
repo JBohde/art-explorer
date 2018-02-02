@@ -6,6 +6,16 @@
       var infoWindow;
       var pos;
       var directionsService;
+      var request = {
+        placeId: 'ChIJsT8qSaJYwokR-m20OGJUKCA'
+      };
+      var cooperHewitt;
+      var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
+      function callback(place, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          cooperHewitt = place;
+        }
+      }
     
         function initMap() {
             var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -15,8 +25,14 @@
                 center: {lat:40.7844, lng:-73.9582},
                 zoom: 12
             });
-    
+            places = new google.maps.places.PlacesService(map);
+            places.getDetails(request, callback);
             infoWindow = new google.maps.InfoWindow;
+            var markerIcon = MARKER_PATH + '.png';
+            marker = new google.maps.Marker({
+              animation: google.maps.Animation.DROP,
+              icon: markerIcon
+            });
             
             // Try HTML5 geolocation.
             if (navigator.geolocation) {
@@ -25,16 +41,17 @@
                   lat: position.coords.latitude,
                   lng: position.coords.longitude
                 };
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Current location.');
+                marker.setPosition(pos);
+                // infoWindow.setContent('Current location.');
                 infoWindow.open(map);
                 map.setCenter(pos);        
                 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                     var selectedMode = document.getElementById('mode').value;
                     console.log(pos);
+                    console.log(cooperHewitt);
                     directionsService.route({
                       origin: pos,
-                      destination: {lat:40.7844, lng:-73.9582},  // Ocean Beach.
+                      destination: {lat:40.7844, lng:-73.9582},  // Cooper Hewitt
                       // Note that Javascript allows us to access the constant
                       // using square brackets and a string value as its
                       // "property."
