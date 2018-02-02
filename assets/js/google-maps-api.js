@@ -123,7 +123,7 @@
       var search = {
         bounds: map.getBounds(),
         types: ['museum']
-    };
+      };
       
       places.nearbySearch(search, function(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -132,12 +132,6 @@
           googleResults = results;
           googleResults.unshift(cooperHewitt);
           console.log(googleResults);
-          firstResult = googleResults[0].name;
-          secondResult = googleResults[1].name;
-          thirdResult = googleResults[2].name;
-          fourthResult = googleResults[3].name;
-          fifthResult = googleResults[4].name;
-          sixthResult = googleResults[5].name;
           $(".carousel").hide();
           $(".results-table").fadeIn();
           $(".explore").fadeIn();

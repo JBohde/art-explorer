@@ -25,13 +25,11 @@ $( document ).ready(function() {
   dbRef.on("value", function(snapshot) {
 
     const newData = snapshot.val();
-    newData[Math.floor(Math.random()*newData.length)];
-    console.log(newData.objects);
     var random;
 
-    function randomArtGenerator(j) {
-       random = newData.objects[Math.floor(Math.random()*newData.objects.length)];
-    }
+    // function randomArtGenerator(j) {
+    //    random = newData.objects[Math.floor(Math.random()*newData.objects.length)];
+    // }
 
     function totalDisplay(i) {
       var outDiv = $("<div class=col-md-12>");
@@ -46,11 +44,11 @@ $( document ).ready(function() {
 
       var artDiv = $("<div class='item'>");
 
-      imgSource = random.images[0].b.url
-      artTitle = random.title;
-      acquired = random.year_acquired;
-      medium = random.medium;
-      info = random.description;
+      imgSource = newData.objects[i].images[0].b.url
+      artTitle = newData.objects[i].title;
+      acquired = newData.objects[i].year_acquired;
+      medium = newData.objects[i].medium;
+      info = newData.objects[i].description;
       infoCard = "Year Acquired: " + acquired + "<br>" +
           "Medium: " + medium + "<br>" +
           "Information: " + info + "</p>";
@@ -77,10 +75,10 @@ $( document ).ready(function() {
       $("#artist-input").val('');
     }
 
-    for (var j = 0; j < 3; j++) {
-      randomArtGenerator(j);
-      console.log(random);
-      totalDisplay(j);
+    for (var i = 0; i < 3; i++) {
+      // randomArtGenerator(i);
+      // console.log(random);
+      totalDisplay(i);
     }
 
     $(".art").on("click", function(event){
@@ -126,4 +124,3 @@ $( document ).ready(function() {
     });
   });
 });
-
