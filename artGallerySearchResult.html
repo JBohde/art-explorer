@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>     
     
   </head>
-  <body>
+  <body background="assets/images/background-5.jpg">
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
           <div class="navbar-header">
@@ -59,7 +59,7 @@
           <button class="btn btn-primary" id="search-input" type="submit">Search</button>
         </form>
       </div>
-        <div class="museum-logo"><img src="assets\images\cooper_hewitt_logo.png" id="logo-image"></div>
+        <h4 id="museum-name">COOPER HEWITT DESIGN MUSEUM</h4>
         <!-- Main section-->
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
@@ -78,8 +78,22 @@
               </div>
             </div>
         </div>
-      <div class="row" id= "showcase">
+      <div class="col-md-4 google-map">
+        <div id="floating-panel">
+            <b>Mode of Travel: </b>
+            <select id="mode">
+              <option value="DRIVING">Driving</option>
+              <option value="WALKING">Walking</option>
+              <option value="BICYCLING">Bicycling</option>
+              <option value="TRANSIT">Transit</option>
+            </select>
+            </div>
+        <div id="map"></div>
       </div>
+      <div class=col-md-8>
+        <div class="row" id= "showcase"></div>
+      </div>
+              <div class="museum-logo"><img src="assets\images\cooper_hewitt_logo.png" id="logo-image"></div>
       <footer id="footer">
         <div class="navbar navbar-default navbar-fixed-bottom">
           <ul class="nav navbar-nav" id="footernav">
@@ -95,5 +109,8 @@
     
     <!-- App Script -->
     <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/google-maps-api-2.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbo4VQfUUHchQB5FDiIBZ0RVb1pGgqtL8&libraries=places&callback=initMap"
+    async defer></script>
   </body>
 </html>
