@@ -5,12 +5,12 @@ html, body {
   padding: 0;
   font-family: Verdana;
 	font-size: 14px;
-	background-color: #eeede4;
+  background-color: #96958c;
 }
 
 .navbar, .navbar-default, .navbar-fixed-bottom, .navbar-default .navbar-nav>li>a {
   color: #4f1308;
-  background-color: #96958c;
+  background-color: #eeede4;;
 }
 
 .form-inline {
@@ -61,7 +61,8 @@ html, body {
 }
 
 .socialImg {
-	height: 30px;
+  height: 30px;
+  margin-top: 15px;
 }
 
 .form-inline {
@@ -93,7 +94,7 @@ html, body {
 #footer{
 	text-align: center;
 	color: #112668;
-	background-color: #96958c;
+	background-color: #eeede4;
 	font-size: 12px;
 	margin-top: 15px;
 }
@@ -178,8 +179,12 @@ html, body {
 }
 
 #copyright {
-  margin-top: 15px;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  color: #4f1308;
 }
+
+
 /*       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
