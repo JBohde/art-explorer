@@ -6,13 +6,11 @@ html, body {
   font-family: Verdana;
   font-size: 14px;
   background-color: #96958c;
-	/* background: cover; */
 }
 
 .navbar, .navbar-default, .navbar-fixed-bottom, .navbar-default .navbar-nav>li>a {
   color: #4f1308;
   background-color: #eeede4;
-  /* background-color: #96958c; */
 }
 
 .form-inline {
