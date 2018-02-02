@@ -79,6 +79,7 @@
               
     
   function initMap() {
+    $(".google-map").show();
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: countries['us'].zoom,
       center: countries['us'].center,
@@ -132,9 +133,8 @@
           googleResults = results;
           googleResults.unshift(cooperHewitt);
           console.log(googleResults);
-          $(".carousel").hide();
+          $(".carousel-one").fadeOut();
           $(".results-table").fadeIn();
-          $(".explore").fadeIn();
           // Create a marker for each hotel found, and
           // assign a letter of the alphabetic to each marker icon.
           for (var i = 0; i < results.length; i++) {

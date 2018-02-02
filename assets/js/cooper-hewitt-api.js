@@ -1,6 +1,4 @@
 $( document ).ready(function() {
-  
-  $(".explore").hide();
   $(".results-table").hide();
   
     var config = {
