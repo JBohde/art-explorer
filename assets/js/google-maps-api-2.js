@@ -31,7 +31,6 @@
             map.setCenter(pos);        
             function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                 var selectedMode = document.getElementById('mode').value;
-                console.log(pos);
                 directionsService.route({
                   origin: pos,
                   destination: {lat:40.7844, lng:-73.9582},  // Ocean Beach.
