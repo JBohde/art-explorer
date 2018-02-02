@@ -1,5 +1,8 @@
 $( document ).ready(function() {
-
+  
+  $(".explore").hide();
+  $(".results-table").hide();
+  
     var config = {
     apiKey: "AIzaSyDyB-QLzbbYtDMixJ9eqppkC83aOjlNag0",
     authDomain: "artgalleryproject-92ef9.firebaseapp.com",
@@ -12,11 +15,12 @@ $( document ).ready(function() {
 
     const dbRef = firebase.database().ref("Artist");
 
-  $("#museum-choice").on("click", function(event) {
+  $("#resultsTable").on("click", function(event) {
+    console.log("Hello");
     event.preventDefault();
     const token = "2e2316873bca66e99bd915dbcb769c56";
     var artist = "Picasso";
-    let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist;
+    let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.people.getObjects&access_token=" + token + "&person=" + artist;
 
       // Perfoming an AJAX GET request to our queryURL
     $.ajax({
@@ -41,12 +45,6 @@ $( document ).ready(function() {
       }
     });
   });
-
-  // $(document).on("click", ".art", function(event){
-  //   console.log("Hello!");
-  //   $("<a href= 'artGallerySearchResult.html'>");
-  // });
-
 });
 
 
