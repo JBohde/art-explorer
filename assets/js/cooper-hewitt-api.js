@@ -31,7 +31,7 @@ $( document ).ready(function() {
     // After the data from the AJAX request comes back
     .then(function(response) {
       dbRef.set(response)
-      for (var i = 0; i < response.objects.length; i++) {
+      for (var i = 0; i < 3; i++) {
         var artDiv = $("<div class='item'>");
         artDiv.attr("id", "image" + i)
         // // Creating and storing an image tag
