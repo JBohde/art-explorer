@@ -16,6 +16,10 @@ h3 {
   margin-top: 50px;
 }
 
+.learn-more {
+  padding-top: 25px;
+}
+
 .navbar, .dropdown-toggle, .navbar-default, .navbar-fixed-bottom, .navbar-default .navbar-nav>li>a {
   color: #4f1308;
   background-color: #eeede4;
@@ -57,7 +61,7 @@ td {
 	height: 150px;
   width: 150px;
   position: relative;
-  margin: 20px 175px 30px;
+  margin: 20px 160px 30px;
   cursor: pointer;
 }
 
