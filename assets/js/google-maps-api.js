@@ -3,8 +3,12 @@
       // country. It then displays markers for all the museums returned,
       // with on-click details for each museum.
 
-  var map, places, infoWindow;
+  var map;
+  var places;
+  var infoWindow;
+  var marker;
   var markers = [];
+  var userMarker;
   var autocomplete;
   var countryRestrict = {'country': 'us'};
   var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
@@ -76,18 +80,22 @@
       cooperHewitt = place;
     }
   }
-              
+  var directionsService;
+  var directionsDisplay;           
     
   function initMap() {
+    $(".google-map").show();
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: countries['us'].zoom,
       center: countries['us'].center,
       mapTypeControl: false,
       panControl: false,
-      zoomControl: false,
+      zoom: 4,
       streetViewControl: false
     });
-      
+    infoWindow = new google.maps.InfoWindow({
+      content: document.getElementById('info-content')
+      });
     // Create the autocomplete object and associate it with the UI input control.
     // Restrict the search to the default country, and to place type "cities".
     autocomplete = new google.maps.places.Autocomplete(
@@ -98,6 +106,8 @@
             });
     places = new google.maps.places.PlacesService(map);
     places.getDetails(request, callback);
+    directionsDisplay = new google.maps.DirectionsRenderer;
+    directionsService = new google.maps.DirectionsService;
     autocomplete.addListener('place_changed', onPlaceChanged);
       
     // Add a DOM event listener to react when the user selects a country.
@@ -111,7 +121,7 @@
       var place = autocomplete.getPlace();
       if (place.geometry) {
         map.panTo(place.geometry.location);
-        map.setZoom(12);
+        map.setZoom(11);
         search();
       } else {
         document.getElementById('autocomplete').placeholder = 'Enter a city';
@@ -132,9 +142,10 @@
           googleResults = results;
           googleResults.unshift(cooperHewitt);
           console.log(googleResults);
-          $(".carousel").hide();
+          $(".carousel-one").fadeOut();
           $(".results-table").fadeIn();
-          $(".explore").fadeIn();
+          $("#art-display").hide();
+          $("#resultsTable").fadeIn();
           // Create a marker for each hotel found, and
           // assign a letter of the alphabetic to each marker icon.
           for (var i = 0; i < results.length; i++) {
@@ -149,14 +160,14 @@
             // If the user clicks a hotel marker, show the details of that hotel
             // in an info window.
             markers[i].placeResult = results[i];
-            google.maps.event.addListener(markers[i], 'click', showInfoWindow);
+            google.maps.event.addListener(markers[i], 'click', showInfoWindow); //,getCurrentPosition, calculateAndDisplayRoute);
             setTimeout(dropMarker(i), i * 100);
             addResult(results[i], i);
           }
         }
       });
     }
-      
+
   function clearMarkers() {
     for (var i = 0; i < markers.length; i++) {
       if (markers[i]) {
@@ -239,6 +250,53 @@
       }
       infoWindow.open(map, marker);
       buildIWContent(place);
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          var userMarkerIcon = MARKER_PATH + '.png';
+          userMarker = new google.maps.Marker({
+            position: pos,
+            animation: google.maps.Animation.DROP,
+            icon: userMarkerIcon
+          });
+          userMarker.setPosition(pos);
+          // infoWindow.setContent('Current location.');
+          map.setCenter(pos);        
+          function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+            var selectedMode = document.getElementById('mode').value;
+            places = new google.maps.places.PlacesService(map);
+            places.getDetails(request, callback);
+            directionsService.route({
+              origin: pos,
+              destination: marker.placeResult.vicinity,  // Cooper Hewitt
+              // Note that Javascript allows us to access the constant
+              // using square brackets and a string value as its
+              // "property."
+              travelMode: google.maps.TravelMode[selectedMode]
+            }, function(response, status) {
+              if (status == 'OK') {
+                directionsDisplay.setDirections(response);
+              } else {
+                window.alert('Directions request failed due to ' + status);
+              }
+          });
+        }
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+          document.getElementById('mode').addEventListener('change', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+          });
+        }, function() {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+        } else {
+       // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+        }
+        directionsDisplay.setMap(map);
     });
   }
     

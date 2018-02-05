@@ -1,7 +1,7 @@
 $( document ).ready(function() {
-  
-  $(".explore").hide();
   $(".results-table").hide();
+  $("#resultsTable").hide();
+  
   
     var config = {
     apiKey: "AIzaSyDyB-QLzbbYtDMixJ9eqppkC83aOjlNag0",
@@ -16,7 +16,7 @@ $( document ).ready(function() {
     const dbRef = firebase.database().ref("Artist");
 
   $("#resultsTable").on("click", function(event) {
-    console.log("Hello");
+    $("#art-display").fadeIn();
     event.preventDefault();
     const token = "2e2316873bca66e99bd915dbcb769c56";
     var artist = "Picasso";
@@ -31,18 +31,21 @@ $( document ).ready(function() {
     // After the data from the AJAX request comes back
     .then(function(response) {
       dbRef.set(response)
-      console.log(response);
       for (var i = 0; i < 3; i++) {
         var artDiv = $("<div class='item'>");
+        artDiv.attr("id", "image" + i)
         // // Creating and storing an image tag
         var artImage = $("<img>");
         artImage.attr("src", response.objects[i].images[0].b.url);
         artImage.attr("class", "art");
+        
         var galleryLink = $("<a href= 'artGallerySearchResult.html'>");
         galleryLink.append(artImage);
         artDiv.append(galleryLink);
-        $("#art-display").append(artDiv);
+        $('#slide-' + i).append(artDiv[0]);
+        console.log(artDiv[0]);
       }
+      
     });
   });
 });

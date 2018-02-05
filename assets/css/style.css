@@ -4,17 +4,80 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: Verdana;
-	font-size: 14px;
-	background: cover;
-}
-
-.navbar, .navbar-default, .navbar-fixed-bottom, .navbar-default .navbar-nav>li>a {
-  color: #4f1308;
+  font-size: 14px;
   background-color: #96958c;
 }
 
+h3 {
+  margin: 0px;
+}
+
+.learn-more {
+  padding-top: 25px;
+}
+
+.navbar, .dropdown-toggle, .navbar-default, .navbar-fixed-bottom, .navbar-default .navbar-nav>li>a {
+  color: #4f1308;
+  background-color: #eeede4;
+}
+
 .form-inline {
-  margin-top: 75px;
+  margin-top: 50px;
+  padding: 5px;
+}
+
+#modal-image {
+  width: 100%;
+  height: 100%;
+}
+
+.item {
+  width: 100%;
+  height: 100%;
+}
+
+#carousel-image {
+  width: 100%;
+  height: 100%;
+}
+
+#resultsTable {
+  width: 100%;
+  height: 100%;
+}
+
+#listing {
+  border-radius: 1em;
+}
+
+td {
+  padding: 5px;
+  cursor: pointer;
+}
+
+#art-display {
+  background-color: white;
+}
+
+.art {
+	height: 360px;
+  width: 360px;
+  /* position: relative; */
+  /* margin-top: 5%;
+  margin-left: 15%;
+  margin-bottom: 5%; */
+  cursor: pointer;
+}
+
+#museum-name {
+  text-align: center;
+}
+
+#logo-image{
+  width:150px;
+  height: 150px;
+  margin-left:110px;
+  margin-top: -80px;
 }
 
 .modal-dialog {
@@ -25,46 +88,6 @@ html, body {
 
 .header-content {
   float: left;
-}
-
-#carousel-img {
-  width: 500px;
-  height: 500px;
-}
-
-#listing {
-  border-radius: 1em;
-}
-td {
-  padding: 5px;
-  cursor: pointer;
-}
-
-#modal-image {
-  width: 100%;
-  height: 100%;
-}
-
-.art {
-	height: 150px;
-	width: 150px;
-	float: left;
-  margin: 8px;;
-  cursor: pointer;
-}
-
-#museum-name {
-  text-align: center;
-}
-
-#logo-image{
-  width:300px;
-  height: 100px;
-  margin-left:415px;
-}
-
-#art-display {
-  background-color: white;
 }
 
 #total-display {
@@ -93,25 +116,22 @@ td {
 
 .PageHeader{
 	text-align: center;
-	margin-bottom: 20px;
+	/* margin-bottom: 20px;
 	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 10px; */
 }
 
 .socialImg {
-	height: 30px;
-}
-
-.form-inline {
-	margin-top: 75px
+  height: 30px;
+  margin-top: 15px;
 }
 
 .btn-primary {
-  background-color: #d8ae64;
+  background-color: #96958c;
 }
 
 .btn-primary:hover {
-  background-color: #bf8c30;
+  background-color: #96958c;
 }
 
 .profileImg {
@@ -126,20 +146,34 @@ td {
 	margin-bottom: 15px;
 }
 
+.footer {
+  width: 100%;
+}
+
 #footer{
 	text-align: center;
-	color: #112668;
-	background-color: #96958c;
+  color: #112668;
+  background-color: #eeede4;
 	font-size: 12px;
   margin-top: 100px;
 }
 
+#copyright {
+  margin-top: 8px;
+  margin-bottom: 5px;
+  color: #4f1308;
+  /* margin-top: 15px; */
+}
 
-/* Always set the map height explicitly to define the size of the div
-  * element that contains the map. */
+/* GOOGLE MAPS */
+/* Optional: Makes the sample page fill the window. */
 #map {
-  height: 50%;
-  width: 50%;
+  width: 100%;
+  height: 500px;
+}
+      
+#floating-panel {
+  margin-bottom: 5px;
 }
 
 #description {
@@ -212,89 +246,3 @@ td {
 #target {
   width: 345px;
 }
-
-#copyright {
-  margin-top: 15px;
-}
-/*       /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 500px;
-				width: 350px;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
-
-      #infowindow-content .title {
-        font-weight: bold;
-      }
-
-      #infowindow-content {
-        display: none;
-      }
-
-      #map #infowindow-content {
-        display: inline;
-      }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
-
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
-
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
-
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      #target {
-        width: 345px;
-      }
