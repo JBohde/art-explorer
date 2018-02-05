@@ -37,7 +37,7 @@ $( document ).ready(function() {
         // // Creating and storing an image tag
         var artImage = $("<img>");
         artImage.attr("src", response.objects[i].images[0].b.url);
-        artImage.attr("class", "artsy");
+        artImage.attr("class", "art");
         
         var galleryLink = $("<a href= 'artGallerySearchResult.html'>");
         galleryLink.append(artImage);

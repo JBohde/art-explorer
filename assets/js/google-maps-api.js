@@ -6,7 +6,9 @@
   var map;
   var places;
   var infoWindow;
+  var marker;
   var markers = [];
+  var userMarker;
   var autocomplete;
   var countryRestrict = {'country': 'us'};
   var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
@@ -78,7 +80,8 @@
       cooperHewitt = place;
     }
   }
-              
+  var directionsService;
+  var directionsDisplay;           
     
   function initMap() {
     $(".google-map").show();
@@ -87,7 +90,7 @@
       center: countries['us'].center,
       mapTypeControl: false,
       panControl: false,
-      zoomControl: false,
+      zoom: 4,
       streetViewControl: false
     });
     infoWindow = new google.maps.InfoWindow({
@@ -103,6 +106,8 @@
             });
     places = new google.maps.places.PlacesService(map);
     places.getDetails(request, callback);
+    directionsDisplay = new google.maps.DirectionsRenderer;
+    directionsService = new google.maps.DirectionsService;
     autocomplete.addListener('place_changed', onPlaceChanged);
       
     // Add a DOM event listener to react when the user selects a country.
@@ -116,7 +121,7 @@
       var place = autocomplete.getPlace();
       if (place.geometry) {
         map.panTo(place.geometry.location);
-        map.setZoom(12);
+        map.setZoom(11);
         search();
       } else {
         document.getElementById('autocomplete').placeholder = 'Enter a city';
@@ -155,7 +160,7 @@
             // If the user clicks a hotel marker, show the details of that hotel
             // in an info window.
             markers[i].placeResult = results[i];
-            google.maps.event.addListener(markers[i], 'click', showInfoWindow);
+            google.maps.event.addListener(markers[i], 'click', showInfoWindow); //,getCurrentPosition, calculateAndDisplayRoute);
             setTimeout(dropMarker(i), i * 100);
             addResult(results[i], i);
           }
@@ -245,6 +250,53 @@
       }
       infoWindow.open(map, marker);
       buildIWContent(place);
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          var userMarkerIcon = MARKER_PATH + '.png';
+          userMarker = new google.maps.Marker({
+            position: pos,
+            animation: google.maps.Animation.DROP,
+            icon: userMarkerIcon
+          });
+          userMarker.setPosition(pos);
+          // infoWindow.setContent('Current location.');
+          map.setCenter(pos);        
+          function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+            var selectedMode = document.getElementById('mode').value;
+            places = new google.maps.places.PlacesService(map);
+            places.getDetails(request, callback);
+            directionsService.route({
+              origin: pos,
+              destination: marker.placeResult.vicinity,  // Cooper Hewitt
+              // Note that Javascript allows us to access the constant
+              // using square brackets and a string value as its
+              // "property."
+              travelMode: google.maps.TravelMode[selectedMode]
+            }, function(response, status) {
+              if (status == 'OK') {
+                directionsDisplay.setDirections(response);
+              } else {
+                window.alert('Directions request failed due to ' + status);
+              }
+          });
+        }
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+          document.getElementById('mode').addEventListener('change', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+          });
+        }, function() {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+        } else {
+       // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+        }
+        directionsDisplay.setMap(map);
     });
   }
     

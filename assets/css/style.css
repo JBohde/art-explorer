@@ -12,10 +12,6 @@ h3 {
   margin: 0px;
 }
 
-.row {
-  margin-top: 50px;
-}
-
 .learn-more {
   padding-top: 25px;
 }
@@ -26,7 +22,62 @@ h3 {
 }
 
 .form-inline {
-  margin-top: 75px;
+  margin-top: 50px;
+  padding: 5px;
+}
+
+#modal-image {
+  width: 100%;
+  height: 100%;
+}
+
+.item {
+  width: 100%;
+  height: 100%;
+}
+
+#carousel-image {
+  width: 100%;
+  height: 100%;
+}
+
+#resultsTable {
+  width: 100%;
+  height: 100%;
+}
+
+#listing {
+  border-radius: 1em;
+}
+
+td {
+  padding: 5px;
+  cursor: pointer;
+}
+
+#art-display {
+  background-color: white;
+}
+
+.art {
+	height: 360px;
+  width: 360px;
+  /* position: relative; */
+  /* margin-top: 5%;
+  margin-left: 15%;
+  margin-bottom: 5%; */
+  cursor: pointer;
+}
+
+#museum-name {
+  text-align: center;
+}
+
+#logo-image{
+  width:150px;
+  height: 150px;
+  margin-left:110px;
+  margin-top: -80px;
 }
 
 .modal-dialog {
@@ -37,58 +88,6 @@ h3 {
 
 .header-content {
   float: left;
-}
-
-#carousel-img {
-  width: 500px;
-  height: 500px;
-}
-
-#listing {
-  border-radius: 1em;
-}
-td {
-  padding: 5px;
-  cursor: pointer;
-}
-
-#modal-image {
-  width: 100%;
-  height: 100%;
-}
-
-.artsy {
-	height: 150px;
-  width: 150px;
-  position: relative;
-  margin: 20px 160px 30px;
-  cursor: pointer;
-}
-
-.art {
-  height: 150px;
-  width: 150px;
-  position: relative;
-  cursor: pointer;
-}
-
-#museum-name {
-  text-align: center;
-}
-
-#floating-panel {
-  margin-bottom: 5px;
-}
-
-#logo-image{
-  width:150px;
-  height: 150px;
-  margin-left:110px;
-  margin-top: -80px;
-}
-
-#art-display {
-  background-color: white;
 }
 
 #total-display {
@@ -127,16 +126,12 @@ td {
   margin-top: 15px;
 }
 
-.form-inline {
-	margin-top: 75px
-}
-
 .btn-primary {
-  background-color: #d8ae64;
+  background-color: #96958c;
 }
 
 .btn-primary:hover {
-  background-color: #bf8c30;
+  background-color: #96958c;
 }
 
 .profileImg {
@@ -150,9 +145,11 @@ td {
 	margin-right: 15px;
 	margin-bottom: 15px;
 }
+
 .footer {
   width: 100%;
 }
+
 #footer{
 	text-align: center;
   color: #112668;
@@ -167,85 +164,85 @@ td {
   color: #4f1308;
   /* margin-top: 15px; */
 }
-/*       /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 500px;
-				width: 350px;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
 
-      #infowindow-content .title {
-        font-weight: bold;
-      }
+/* GOOGLE MAPS */
+/* Optional: Makes the sample page fill the window. */
+#map {
+  width: 100%;
+  height: 500px;
+}
+      
+#floating-panel {
+  margin-bottom: 5px;
+}
 
-      #infowindow-content {
-        display: none;
-      }
+#description {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+}
 
-      #map #infowindow-content {
-        display: inline;
-      }
+#infowindow-content .title {
+  font-weight: bold;
+}
 
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
+#infowindow-content {
+  display: none;
+}
 
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
+#map #infowindow-content {
+  display: inline;
+}
 
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
+.pac-card {
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
+}
 
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
 
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
 
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
+.pac-controls label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
 
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      #target {
-        width: 345px;
-      }
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+#target {
+  width: 345px;
+}
