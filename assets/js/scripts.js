@@ -24,6 +24,8 @@ $( document ).ready(function() {
   var myModal = $("#myModal");
   var modalImage;
   var isModalShowing = false;
+
+  $("#art-display").hide();
   
     $("#resultsTable").on("click", function(event) {
     $("#art-display").fadeIn();
@@ -50,8 +52,8 @@ $( document ).ready(function() {
         var artInfo = $("<div class=media-body>");
         artInfo.attr("id", "artInfo");
         var artDiv = $("<div class='item'>");
-        artDiv.attr("width", "360");
-        artDiv.attr("height", "360");
+        // artDiv.attr("width", "360");
+        // artDiv.attr("height", "360");
   
         participants = response.objects[i].participants;
         imgSource = response.objects[i].images[0].b.url
@@ -85,7 +87,7 @@ $( document ).ready(function() {
                   info + "</p>";
   
         artImage = $("<img>");
-        artImage.attr("class", "img-responsive art");
+        artImage.attr("class", "art");
         artImage.attr("name", artTitle);
         artImage.attr("data-toggle", "modal");
         artImage.attr("data-target", "#myModal>");

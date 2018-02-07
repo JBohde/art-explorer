@@ -265,7 +265,7 @@
           });
           userMarker.setPosition(pos);
           // infoWindow.setContent('Current location.');
-          map.setCenter(pos);        
+          map.setCenter(marker.position.latitude, marker.position.longitude);        
           function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             var selectedMode = document.getElementById('mode').value;
             places = new google.maps.places.PlacesService(map);
