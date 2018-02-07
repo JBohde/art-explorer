@@ -9,13 +9,10 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <!-- Bootstrap CDN-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-
-    <!-- Bootstrap CDN-->
-
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -220,7 +217,7 @@
                 <tr id="iw-website-row" class="iw_table_row">
                   <td class="iw_attribute_name">Options:</td>
                     <td id="iw-photo-buttons">
-                    <button type="button" name="button" class="btn btn-info" id="btnPhotos">Photos</button>
+                    <button type="button" name="button" class="btn btn-info" id="photos-button">Photos</button>
                   </td>
                 </tr>
                 <tr id="iw-website-row" class="iw_table_row">
@@ -229,18 +226,12 @@
                       <button type="button" name="button" class="btn btn-success" id="bucket-list">Add to list</button>
                     </td>
                 </tr>
-                <!-- <tr id="iw-website-row" class="iw_table_row">
-                  <td class="iw_attribute_name"></td>
-                    <td id="iw-bucketList-button">
-                      <button type="button" name="button" class="btn btn-success" id="bucket-list">Add to bucket</button>
-                    </td>
-                </tr> -->
               </table>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <a class="twitter-timeline" data-width="100%" data-height="750" target="_blank" href="https://twitter.com/locartexplorer?ref_src=twsrc%5Etfw">Tweets by locartexplorer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a class="twitter-timeline" data-width="100%" data-height="1000" target="_blank" href="https://twitter.com/locartexplorer?ref_src=twsrc%5Etfw">Tweets by locartexplorer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
 
@@ -260,7 +251,7 @@
                 <form class="form-inline">
                   <div class="form-group">
                     <label for="email">Email:</label>
-                  <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
                   </div>
                   <div class="form-group">
                     <label for="pwd">Password:</label>
@@ -273,7 +264,7 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default"data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -345,52 +336,58 @@
           </div>
         </div>
       </div>
-      <div class="row learn-more">
+      <div class="row faq">
         <div class="col-md-12">
           <h2>Frequently Asked Questions</h2>
-          <div id="accordion">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                   What museums are represented in this search?
-                  </button>
-                </h5>
-              </div>      
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                  Currently, we work with the Smithsonian museums. We are developing additional museums and collections on a daily basis.
+            <div id="accordion">
+
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    What museums are represented in this search?
+                    </button>
+                  </h5>
+                </div>      
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    Currently, we work with the Smithsonian museums. We are developing additional museums and collections on a daily basis.
+                  </div>
+                </div>
+
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      How is the location calculated?
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    The location is figured out based on the zip code or city/state you provided in the search, based off of the Google Map data. Some distances may vary, depending on the accuracy of the Google data.                      </div>
+                  </div>
+                </div>
+
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      How can I save the art pieces I want to visit?
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body">
+                    You can add them to your Google Map. Plus, coming soon, we'll be linking with TripAdvisor, so you can add it to your trip.
+                  </div>
                 </div>
               </div>
-            <div class="card">
-              <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    How is the location calculated?
-                  </button>
-                </h5>
-              </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="card-body">
-                The location is figured out based on the zip code or city/state you provided in the search, based off of the Google Map data. Some distances may vary, depending on the accuracy of the Google data.                      </div>
-              </div>
-            </div>
-          <div class="card">
-            <div class="card-header" id="headingThree">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  How can I save the art pieces I want to visit?
-                </button>
-              </h5>
-            </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="card-body">
-              You can add them to your Google Map. Plus, coming soon, we'll be linking with TripAdvisor, so you can add it to your trip.
             </div>
           </div>
         </div>
       </div>
-
+      <div class="footer">
        <footer id="footer">
          <div class="navbar navbar-default navbar-fixed-bottom">
            <div class="text-center-align">
@@ -404,13 +401,14 @@
            </div>
          </div>
        </footer>
+      </div>
 
     <!-- App Script -->
     <script src="assets/js/scripts.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbo4VQfUUHchQB5FDiIBZ0RVb1pGgqtL8&libraries=places&callback=initMap"async defer></script>
-    <script type="text/javascript" src="assets/js/flickr.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/flickr.js"></script> -->
     <!-- <script src="assets/js/google-maps-api.js"></script> -->
-    <!-- <script type="text/javascript" src="assets/js/lightbox.js"></script> -->
+    <script type="text/javascript" src="assets/js/lightbox.js"></script>
     <!-- <script src="assets/js/bucketList.js"></script> -->
     <!-- <script type="text/javascript" src="assets/js/wishlist.js"></script> -->
   </body>

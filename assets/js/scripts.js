@@ -1,5 +1,7 @@
-$( document ).ready(function() {
+// $( document ).ready(function() {
   $("#art-display").hide();
+  $(".learn-more").hide();
+  $(".faq").hide();
 
   var config = {
   apiKey: "AIzaSyDyB-QLzbbYtDMixJ9eqppkC83aOjlNag0",
@@ -30,9 +32,6 @@ $( document ).ready(function() {
   var modalImage;
   var isModalShowing = false;
 
-
-
-  
     $("#resultsTable").on("click", function(event) {
     $("#art-display").fadeIn();
     event.preventDefault();
@@ -158,15 +157,11 @@ $( document ).ready(function() {
     });
   });
 
-  $("#addToBucketList").on("click", function(event) {
+  $("#bucket-list").on("click", function(event) {
     console.log("hello!");
     // Capture user inputs and store them into variables
     if(isModalShowing) return;
     isModalShowing = true;
-    modalImage.attr("src", thisSource);
-    // $(".header-content").append(artHeading);
-    // $(".modal-body").append(modalImage);
-    // $(".modal-body").append(artInfo);
     myBucketModal.attr("class", "modal fade in");
     myBucketModal.attr("style", "display: block");
 
@@ -190,14 +185,14 @@ $( document ).ready(function() {
     // dbref.setItem("email", email);
     // dbref.setItem("age", age);
     // dbref.setItem("comment", comment);
-    });
+  });
 
     // By default display the content from sessionStorage
     // $("#name-display").text(dbref.getItem("name"));
     // $("#email-display").text(dbref.getItem("email"));
     // $("#age-display").text(dbref.getItem("age"));
     // $("#comment-display").text(dbref.getItem("comment"));
-});
+// });
 
     // This example uses the autocomplete feature of the Google Places API.
     // It allows the user to find all museums in a given place, within a given
@@ -350,7 +345,7 @@ $( document ).ready(function() {
             $(".results-table").fadeIn();
             $("#art-display").hide();
             $("#resultsTable").fadeIn();
-            // Create a marker for each hotel found, and
+            // Create a marker for each museum found, and
             // assign a letter of the alphabetic to each marker icon.
             for (var i = 0; i < results.length; i++) {
               var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
@@ -361,7 +356,7 @@ $( document ).ready(function() {
                 animation: google.maps.Animation.DROP,
                 icon: markerIcon
               });
-              // If the user clicks a hotel marker, show the details of that hotel
+              // If the user clicks a museum marker, show the details of that museum
               // in an info window.
               markers[i].placeResult = results[i];
               google.maps.event.addListener(markers[i], 'click', showInfoWindow); //,getCurrentPosition, calculateAndDisplayRoute);
@@ -503,6 +498,14 @@ $( document ).ready(function() {
           directionsDisplay.setMap(map);
       });
     }
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+      'Error: The Geolocation service failed.' :
+      'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
       
     // Load the place information into the HTML elements used by the info window.
     function buildIWContent(place) {
@@ -516,34 +519,53 @@ $( document ).ready(function() {
       // if the place ID's idex is not in array it will be -1
       if ( bucketListIndex < 0) {
       // if place.id is negative this code runs
-      document.getElementById('iw-bucketList-button').innerHTML = "<button type='button' name='button' class='btn btn-success' id='addToBucketList'>Add to list</button>";
+      // document.getElementById('iw-bucketList-button').innerHTML = "<button type='button' name='button' class='btn btn-success' id='addToBucketList'>Add to list</button>";
       //set on click event for add to list button
-      document.getElementById('addToBucketList').onclick = function() {
-        // this.remove();
-        console.log("hello!");
-        // Capture user inputs and store them into variables
-        if(isBucketModalShowing) return;
-          isBucketModalShowing = true;
-          myBucketModal.attr("class", "modal fade in");
-          myBucketModal.attr("style", "display: block");
-          document.getElementById('iw-bucketList-button').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
-          console.log(place.name);
-          bucketList.push(place.id);
-          console.log(bucketList);
-          alreadyAdded = true;
-        }
-      } else {
-          document.getElementById('iw-bucketList-button').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
-          console.log('already added');
       }
+
+      // document.getElementById('addToBucketList').onclick = function() {
+      //   this.remove();
+      //   console.log("hello!");
+      //   // Capture user inputs and store them into variables
+      //   // if(isBucketModalShowing) return;
+      //   //   isBucketModalShowing = true;
+      //     myBucketModal.attr("class", "modal fade in");
+      //     myBucketModal.attr("style", "display: block");
+      //     document.getElementById('iw-bucketList-button').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
+      //     console.log(place.name);
+      //     bucketList.push(place.id);
+      //     console.log(bucketList);
+      //     // alreadyAdded = true;
+      //   }
+      //   // } else {
+      //   //   document.getElementById('iw-bucketList-button').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
+      //   //   console.log('already added');  
+
   
-      document.getElementById('btnPhotos').onclick = function (){
-        console.log('clicked');
-        document.getElementById('img-repo').innerHTML =
-        "<h1>Hello World!</h1>"
-        + "<div class='item' id='image-1'>"
-        +   "<img class='thumbnail img-responsive' title='Image 11' src='http://dummyimage.com/600x350/ccc/969696'>"
-        + "</div>";
+      document.getElementById('photos-button').onclick = function() {
+        $("#photos").empty();
+        var search = $(this).text();
+        console.log(search);
+        var searchURL=  "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+    
+        $.getJSON(searchURL, {
+          tags: search,
+          tagmode: "any",
+          format: "json"
+        }).done(function(data) {
+          console.log(data);
+          $.each(data.items, function(index, item) {
+            // console.log(item)
+            $("<img>").attr("src", item.media.m).appendTo("#photos");
+          });
+        }).fail(function() {
+          console.log("error occured accessing the Flickr API.")
+        });
+        // document.getElementById('img-repo').innerHTML =
+        // "<h1>Hello World!</h1>"
+        // + "<div class='item' id='image-1'>"
+        // +   "<img class='thumbnail img-responsive' title='Image 11' src='http://dummyimage.com/600x350/ccc/969696'>"
+        // + "</div>";
       }
         
       if (place.formatted_phone_number) {

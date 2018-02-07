@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $(document).on("click", ".list-group-item", function(){
+  $("#photos-button").on("click", ".list-group-item", function(){
     $("#photos").empty();
     var search = $(this).text();
     console.log(search);
