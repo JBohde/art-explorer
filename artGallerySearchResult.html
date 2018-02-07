@@ -36,7 +36,7 @@
           <ul class="nav navbar-nav navbar-right">
               <div class="btn-group dropleft">
                   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Learn More
+                      <h3>learn more</h3>
                   </button>
                   <div class="dropdown-menu">
                       <li><a href="about.html">About</a></li>
@@ -48,15 +48,17 @@
         </div>
       </div>        
     </nav>
-    <div class="container" id="MainContent">      
-      <div class="PageHeader">
-        <form class="form-inline">
-          <input class="form-control" id="artist-input" type="search" placeholder="Enter an artist or topic" aria-label="Search">
-          <button class="btn btn-primary" id="search-input" type="submit">Search</button>
-        </form>
-      </div>
-        <h4 id="museum-name">COOPER HEWITT DESIGN MUSEUM</h4>
+    <div class="container" id="MainContent"> 
+        <div class="PageHeader">
+            <form class="form-inline">
+              <input class="form-control" id="artist-input" type="search" placeholder="Enter an artist or topic" aria-label="Search">
+              <button class="btn btn-primary" id="search-input" type="submit">Search</button>
+            </form>
+          </div>
+     
+      <div class="row">
         <!-- Main section-->
+        <h3 id="museum-name">COOPER HEWITT DESIGN MUSEUM</h3>
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
               <!-- Modal content-->
@@ -89,18 +91,21 @@
       <div class=col-md-8>
         <div class="row" id= "showcase"></div>
       </div>
-      <div class="museum-logo"><img src="assets\images\cooper_hewitt_logo3.jpg" id="logo-image"></div>
+      <div class="museum-logo"><img src="assets\images\cooper_hewitt_logo4.jpg" id="logo-image"></div>
+      </div>
       <footer id="footer">
-        <div class="text-center-align">
-          <div class="container" class="text-center-align">
-            <a href="https://www.facebook.com/LocArt-Explorer-385449908535019/" target="_blank"><img src="assets\images\facebook.png" class="socialImg"></a>
-            <a href="https://www.instagram.com/locartexplorer" target="_blank"><img src="assets\images\instagram.png" class="socialImg"></a>
-            <a href="https://twitter.com/locartexplorer" target="_blank"><img src="assets\images\twitter.png" class="socialImg"></a>
-            <br>       
-          <div class="text-center-align" id="copyright">&copy;Copyright 2018 Art Work Project</div>
+          <div class="navbar navbar-default navbar-fixed-bottom">
+            <div class="text-center-align">
+              <div class="container footer" class="text-center-align">
+                <a href="https://www.facebook.com/LocArt-Explorer-385449908535019/" target="_blank"><img src="assets\images\facebook.png" class="socialImg"></a>
+                <a href="https://www.instagram.com/locartexplorer" target="_blank"><img src="assets\images\instagram.png" class="socialImg"></a>
+                <a href="https://twitter.com/locartexplorer" target="_blank"><img src="assets\images\twitter.png" class="socialImg"></a>
+                <br>       
+                <div class="text-center-align" id="copyright">&copy;Copyright 2018 Art Work Project</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
     
     <!-- App Script -->
     <script src="assets/js/scripts.js"></script>

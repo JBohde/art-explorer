@@ -3,7 +3,9 @@
       // country. It then displays markers for all the museums returned,
       // with on-click details for each museum.
 
-  var map, places, infoWindow;
+  var map;
+  var places;
+  var infoWindow;
   var markers = [];
   var autocomplete;
   var countryRestrict = {'country': 'us'};
@@ -88,7 +90,9 @@
       zoomControl: false,
       streetViewControl: false
     });
-      
+    infoWindow = new google.maps.InfoWindow({
+      content: document.getElementById('info-content')
+      });
     // Create the autocomplete object and associate it with the UI input control.
     // Restrict the search to the default country, and to place type "cities".
     autocomplete = new google.maps.places.Autocomplete(
@@ -135,6 +139,8 @@
           console.log(googleResults);
           $(".carousel-one").fadeOut();
           $(".results-table").fadeIn();
+          $("#art-display").hide();
+          $("#resultsTable").fadeIn();
           // Create a marker for each hotel found, and
           // assign a letter of the alphabetic to each marker icon.
           for (var i = 0; i < results.length; i++) {
@@ -156,7 +162,7 @@
         }
       });
     }
-      
+
   function clearMarkers() {
     for (var i = 0; i < markers.length; i++) {
       if (markers[i]) {

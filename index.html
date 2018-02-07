@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="3730224195-55mbd9pi11nnqjovf8drh42m1jsmhv6v.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="3730224195-5v3sp4d75hepuedk22sto0vbf92lpicp.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title> Local Art Gallery Search </title>
     <!-- jQuery -->
@@ -18,7 +18,7 @@
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
@@ -39,7 +39,7 @@
           <ul class="nav navbar-nav navbar-right">
               <div class="btn-group dropleft">
                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Learn More
+                  <h3>learn more</h3>
                 </button>
                 <div class="dropdown-menu">
                     <li><a href="about.html">About</a></li>
@@ -87,11 +87,35 @@
           <div id="map"></div>
         </div>
         <div class="col-md-5 list-group results-table">
-          <div class="row">
             <div id="art-display">
+              <div id="mySecondCarousel" class="carousel slide slide two" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#mySecondCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#mySecondCarousel" data-slide-to="1"></li>
+                  <li data-target="#mySecondCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="item active" id="slide-0"></div>
+                  <div class="item" id="slide-1"></div>
+                  <div class="item" id="slide-2"></div>
+                  <!-- <div class="item" id="slide-3"></div>
+                  <div class="item" id="slide-4"></div>
+                  <div class="item" id="slide-5"></div>
+                  <div class="item" id="slide-6"></div>
+                  <div class="item" id="slide-7"></div> -->
+                </div>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
             </div>
-          </div>
-          <div class="row listing">
           <div id="listing">
             <table id="resultsTable">
               <tbody id="results"></tbody>
@@ -127,7 +151,6 @@
               </table>
             </div>
           </div>
-        </div>
       </div>
 
       <div class="col-md-5 carousel-one">
@@ -183,13 +206,15 @@
         </div>
     </div>
     <footer id="footer">
-      <div class="text-center-align">
-        <div class="container" class="text-center-align">
+      <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="text-center-align">
+          <div class="container footer" class="text-center-align">
             <a href="https://www.facebook.com/LocArt-Explorer-385449908535019/" target="_blank"><img src="assets\images\facebook.png" class="socialImg"></a>
             <a href="https://www.instagram.com/locartexplorer" target="_blank"><img src="assets\images\instagram.png" class="socialImg"></a>
             <a href="https://twitter.com/locartexplorer" target="_blank"><img src="assets\images\twitter.png" class="socialImg"></a>
             <br>       
-          <div class="text-center-align" id="copyright">&copy;Copyright 2018 Art Work Project</div>
+            <div class="text-center-align" id="copyright">&copy;Copyright 2018 Art Work Project</div>
+          </div>
         </div>
       </div>
     </footer>

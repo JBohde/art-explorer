@@ -6,13 +6,23 @@ html, body {
   font-family: Verdana;
   font-size: 14px;
   background-color: #96958c;
-	/* background: cover; */
 }
 
-.navbar, .navbar-default, .navbar-fixed-bottom, .navbar-default .navbar-nav>li>a {
+h3 {
+  margin: 0px;
+}
+
+.row {
+  margin-top: 50px;
+}
+
+.learn-more {
+  padding-top: 25px;
+}
+
+.navbar, .dropdown-toggle, .navbar-default, .navbar-fixed-bottom, .navbar-default .navbar-nav>li>a {
   color: #4f1308;
   background-color: #eeede4;
-  /* background-color: #96958c; */
 }
 
 .form-inline {
@@ -47,11 +57,18 @@ td {
   height: 100%;
 }
 
-.art {
+.artsy {
 	height: 150px;
-	width: 150px;
-	float: left;
-  margin: 8px;;
+  width: 150px;
+  position: relative;
+  margin: 20px 160px 30px;
+  cursor: pointer;
+}
+
+.art {
+  height: 150px;
+  width: 150px;
+  position: relative;
   cursor: pointer;
 }
 
@@ -59,11 +76,15 @@ td {
   text-align: center;
 }
 
+#floating-panel {
+  margin-bottom: 5px;
+}
+
 #logo-image{
-  width:200px;
-  height: 200px;
-  margin-left:75px;
-  margin-top: -100px;
+  width:150px;
+  height: 150px;
+  margin-left:110px;
+  margin-top: -80px;
 }
 
 #art-display {
@@ -96,9 +117,9 @@ td {
 
 .PageHeader{
 	text-align: center;
-	margin-bottom: 20px;
+	/* margin-bottom: 20px;
 	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 10px; */
 }
 
 .socialImg {
@@ -129,15 +150,17 @@ td {
 	margin-right: 15px;
 	margin-bottom: 15px;
 }
-
+.footer {
+  width: 100%;
+}
 #footer{
 	text-align: center;
   color: #112668;
   background-color: #eeede4;
-	/* background-color: #96958c; */
 	font-size: 12px;
   margin-top: 100px;
 }
+
 #copyright {
   margin-top: 8px;
   margin-bottom: 5px;
