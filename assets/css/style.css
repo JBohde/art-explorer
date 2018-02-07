@@ -8,8 +8,8 @@ html, body {
   background-color: #96958c;
 }
 
-h3 {
-  margin: 0px;
+.container {
+	width: 90%;
 }
 
 .learn-more {
@@ -22,9 +22,11 @@ h3 {
 }
 
 .form-inline {
-  margin-top: 50px;
+  /* margin-top: 50px; */
   padding: 5px;
+  position: relative;
 }
+
 
 #modal-image {
   width: 100%;
@@ -36,9 +38,22 @@ h3 {
   height: 100%;
 }
 
-#carousel-image {
+#carousel-one-image {
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: 800px;
+  max-width: 1200px;
+}
+
+#carousel-image {
+  position: relative;
+  width: 100%;
+  height: 360px;
+}
+
+.twitter-timeline {
+  data-width: 100%;
+  data-height: 750px;
 }
 
 #resultsTable {
@@ -55,17 +70,9 @@ td {
   cursor: pointer;
 }
 
-#art-display {
-  background-color: white;
-}
-
 .art {
-	height: 360px;
-  width: 360px;
-  /* position: relative; */
-  /* margin-top: 5%;
-  margin-left: 15%;
-  margin-bottom: 5%; */
+  height: 80%;
+  width: 100%;
   cursor: pointer;
 }
 
@@ -116,9 +123,6 @@ td {
 
 .PageHeader{
 	text-align: center;
-	/* margin-bottom: 20px;
-	padding-top: 10px;
-	padding-bottom: 10px; */
 }
 
 .socialImg {
@@ -134,17 +138,17 @@ td {
   background-color: #96958c;
 }
 
-.profileImg {
-	height: 99px;
-	margin: 0px 20px 20px 0px;
+.media-object {
+  height: 140px;
+	width: 140px;
 }
 
-.ArtGalleryImg{
+/* .ArtGalleryImg{
 	height: 140px;
 	width: 140px;
 	margin-right: 15px;
 	margin-bottom: 15px;
-}
+} */
 
 .footer {
   width: 100%;
