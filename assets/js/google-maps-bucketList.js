@@ -141,7 +141,7 @@ function search() {
           // If the user clicks a museum marker, show the details of that museum
           // in an info window.
           markers[i].placeResult = results[i];
-          console.log(results[i]);
+          // console.log(results[i]);
           google.maps.event.addListener(markers[i], 'click', showInfoWindow);
           setTimeout(dropMarker(i), i * 100);
           addResult(results[i], i);

@@ -12,8 +12,12 @@ html, body {
 	width: 90%;
 }
 
-.learn-more {
-  padding-top: 25px;
+.row {
+  padding: 10px;
+}
+
+.col-md-4 {
+	margin-top: 5px;
 }
 
 .navbar, .dropdown-toggle, .navbar-default, .navbar-fixed-bottom, .navbar-default .navbar-nav>li>a {
@@ -22,11 +26,19 @@ html, body {
 }
 
 .form-inline {
-  /* margin-top: 50px; */
   padding: 5px;
   position: relative;
 }
 
+.where {
+  height: 65px;
+  font-size: 36px;
+}
+
+#controls {
+  position: center;
+  margin-left: 1%;
+}
 
 #modal-image {
   width: 100%;
@@ -41,8 +53,8 @@ html, body {
 #carousel-one-image {
   position: relative;
   width: 100%;
-  height: 800px;
-  max-width: 1200px;
+  height: 760px;
+  max-width: 1600px;
 }
 
 #carousel-image {
@@ -51,18 +63,13 @@ html, body {
   height: 360px;
 }
 
-.twitter-timeline {
-  data-width: 100%;
-  data-height: 750px;
-}
-
-#resultsTable {
-  width: 100%;
-  height: 100%;
-}
-
 #listing {
   border-radius: 1em;
+}
+
+table {
+  width:  100%;
+  border-collapse: collapse;
 }
 
 td {
@@ -71,7 +78,7 @@ td {
 }
 
 .art {
-  height: 80%;
+  height: 360px;
   width: 100%;
   cursor: pointer;
 }
@@ -142,13 +149,6 @@ td {
   height: 140px;
 	width: 140px;
 }
-
-/* .ArtGalleryImg{
-	height: 140px;
-	width: 140px;
-	margin-right: 15px;
-	margin-bottom: 15px;
-} */
 
 .footer {
   width: 100%;

@@ -74,6 +74,9 @@
   };
   var cooperHewitt;
   var googleResults = [];
+  var bucketList = [];
+  var myBucketModal = $("#myBucketListModal");
+  var isModalShowing = false;
     
   function callback(place, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -272,7 +275,7 @@
             places.getDetails(request, callback);
             directionsService.route({
               origin: pos,
-              destination: marker.placeResult.vicinity,  // Cooper Hewitt
+              destination: marker.placeResult.vicinity,
               // Note that Javascript allows us to access the constant
               // using square brackets and a string value as its
               // "property."
@@ -307,6 +310,44 @@
     document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
         '">' + place.name + '</a></b>';
     document.getElementById('iw-address').textContent = place.vicinity;
+    //store the index of the place ID
+    var bucketListIndex = bucketList.indexOf(place.id);
+    // if the place ID's idex is not in array it will be -1
+    if ( bucketListIndex < 0) {
+    // if place.id is negative this code runs
+    document.getElementById('iw-bucketList-button').innerHTML = "<button type='button' name='button' class='btn btn-success' id='addToBucketList'>Add to list</button>";
+    //set on click event for add to list button
+    document.getElementById('addToBucketList').onclick = function() {
+      // this.remove();
+      console.log("hello!");
+      // Capture user inputs and store them into variables
+          if(isModalShowing) return;
+          isModalShowing = true;
+          // modalImage.attr("src", thisSource);
+          // $(".header-content").append(artHeading);
+          // $(".modal-body").append(modalImage);
+          // $(".modal-body").append(artInfo);
+          myBucketModal.attr("class", "modal fade in");
+          myBucketModal.attr("style", "display: block");
+      document.getElementById('iw-bucketList-button').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
+      console.log(place.name);
+      bucketList.push(place.id);
+      console.log(bucketList);
+      alreadyAdded = true;
+      }
+    } else {
+        document.getElementById('iw-bucketList-button').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
+        console.log('already added');
+    }
+
+    document.getElementById('btnPhotos').onclick = function (){
+      console.log('clicked');
+      document.getElementById('img-repo').innerHTML =
+      "<h1>Hello World!</h1>"
+      + "<div class='item' id='image-1'>"
+      +   "<img class='thumbnail img-responsive' title='Image 11' src='http://dummyimage.com/600x350/ccc/969696'>"
+      + "</div>";
+    }
       
     if (place.formatted_phone_number) {
       document.getElementById('iw-phone-row').style.display = '';
