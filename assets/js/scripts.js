@@ -1,8 +1,19 @@
 $( document ).ready(function() {
   $(".learn-more").hide();
   $(".faq").hide();
-  $(".results-table").hide();
-  $("#resultsTable").hide();
+  $("#results-table").hide();
+
+  var config = {
+    apiKey: "AIzaSyDyB-QLzbbYtDMixJ9eqppkC83aOjlNag0",
+    authDomain: "artgalleryproject-92ef9.firebaseapp.com",
+    databaseURL: "https://artgalleryproject-92ef9.firebaseio.com",
+    projectId: "artgalleryproject-92ef9",
+    storageBucket: "",
+    messagingSenderId: "308927903962"
+    };
+    firebase.initializeApp(config);
+  
+  const dbRef = firebase.database().ref("Artist");
 
   var artImage;
   var participants;
@@ -14,37 +25,44 @@ $( document ).ready(function() {
   var medium;
   var info;
   var infoCard;
+  var newData;
 
   var myModal = $("#myModal");
   var modalImage;
   var isModalShowing = false;
 
-    const token = "2e2316873bca66e99bd915dbcb769c56";
-    var artist = "Picasso";
-    let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.people.getObjects&access_token=" + token + "&person=" + artist;
+  const token = "2e2316873bca66e99bd915dbcb769c56";
+  var artist = "Picasso";
+  let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.people.getObjects&access_token=" + token + "&person=" + artist;
 
-    // Perfoming an AJAX GET request to our queryURL
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
-
-    // After the data from the AJAX request comes back
-    .then(function(response) {
+  // Perfoming an AJAX GET request to our queryURL
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+  // After the data from the AJAX request comes back
+  .then(function(response) {
       // var random;
       // function randomArtGenerator(j) {
       //   random = response.objects[Math.floor(Math.random()*response.objects.length)];
       // }
-      
+      console.log(response);
+      dbRef.set(response);
+    });
+
+    dbRef.on("value", function(snapshot) {
+
+      newData = snapshot.val();
+
       function totalDisplay(i) {
         var artHeading = $("<h4 class=media-heading>");
         var artInfo = $("<div class=media-body>");
         artInfo.attr("id", "artInfo");
         var artDiv = $("<div class='panel-body'>");
   
-        participants = response.objects[i].participants;
-        imgSource = response.objects[i].images[0].b.url
-        artTitle = response.objects[i].title;
+        participants = newData.objects[i].participants;
+        imgSource = newData.objects[i].images[0].b.url
+        artTitle = newData.objects[i].title;
   
         for (var j = 0; j < participants.length; j++) {
           personName = participants[j].person_name;
@@ -65,9 +83,9 @@ $( document ).ready(function() {
           }
         }
   
-        acquired = "Year acquired: " + response.objects[i].year_acquired;
-        medium = "Medium: " +response.objects[i].medium;
-        info = "Information: " + response.objects[i].description;
+        acquired = "Year acquired: " + newData.objects[i].year_acquired;
+        medium = "Medium: " +newData.objects[i].medium;
+        info = "Information: " + newData.objects[i].description;
         infoCard = artist + "<br>" + 
                   acquired + "<br>" + 
                   medium + "<br>" +
@@ -87,6 +105,7 @@ $( document ).ready(function() {
         $('#slide-' + i).append(artDiv[0]);
         artHeading.append(artTitle);
         artInfo.append(infoCard);
+        $("#keyword-entry").val('');
         
         // $("#artist-input").val('');
         $(".art").on("click", function(event){
@@ -103,32 +122,33 @@ $( document ).ready(function() {
         });
       }
   
-      for (var i = 0; i < response.objects.length; i++) {
+      for (var i = 0; i < 3; i++) {
         // randomArtGenerator(i);
         // console.log(random);
         totalDisplay(i);
       }
-    });
-  });
 
-  // Sets a listener for closing the modal and resetting parameters
-  $(".close").on("click", function(event){
+    });
+
+     // Sets a listener for closing the modal and resetting parameters
+    $(".close").on("click", function(){
       myModal.attr("class", "modal fade out");
       myModal.attr("style", "display: none");
       isModalShowing = false;
       $(".header-content").empty();
       $(".modal-body").empty();
-  });
+    });
 
   // Sets a event listnener for a new artist
-  $("#search-input").on("click", function(event) {
+  $("#artist-submit").on("click", function(event) {
     event.preventDefault();
-    $("#showcase").empty();
+    
+    $(".item").empty();
     $(".header-content").empty();
     $(".modal-body").empty();
 
     const token = "2e2316873bca66e99bd915dbcb769c56";
-    var artist = $("#artist-input").val().trim();
+    artist = $("#keyword-entry").val().trim();
     let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist;
     // Perfoming an AJAX GET request to our queryURL
     $.ajax({
@@ -137,6 +157,8 @@ $( document ).ready(function() {
     })
     // After the data from the AJAX request comes back
     .then(function(response) {
-      // dbRef.set(response);
+      dbRef.set(response);
+      console.log(response);
     });
   });
+});

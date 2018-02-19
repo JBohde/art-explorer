@@ -124,7 +124,7 @@
         var place = autocomplete.getPlace();
         if (place.geometry) {
           map.panTo(place.geometry.location);
-          map.setZoom(11);
+          map.setZoom(14);
           search();
         } else {
           document.getElementById('autocomplete').placeholder = 'Enter a city';
@@ -143,10 +143,9 @@
             clearResults();
             clearMarkers();
             googleResults = results;
-            googleResults.unshift(cooperHewitt);
+            // googleResults.unshift(cooperHewitt);
             console.log(googleResults);
-            $(".results-table").fadeIn();
-            $("#resultsTable").fadeIn();
+            $("#results-table").fadeIn();
             // Create a marker for each museum found, and
             // assign a letter of the alphabetic to each marker icon.
             for (var i = 0; i < results.length; i++) {

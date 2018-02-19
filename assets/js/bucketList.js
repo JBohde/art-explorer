@@ -44,7 +44,7 @@ var config = {
     });
 
     // By default display the content from sessionStorage
-    $("#name-display").text(dbref.getItem("name"));
-    $("#email-display").text(dbref.getItem("email"));
-    $("#age-display").text(dbref.getItem("age"));
-    $("#comment-display").text(dbref.getItem("comment"));
+    // $("#name-display").text(dbref.getItem("name"));
+    // $("#email-display").text(dbref.getItem("email"));
+    // $("#age-display").text(dbref.getItem("age"));
+    // $("#comment-display").text(dbref.getItem("comment"));
