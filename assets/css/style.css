@@ -32,9 +32,9 @@ html, body {
 
 #Logo{
 	height:auto;
-	width:200px;
-	position: fixed;
-  margin-top: -10px;
+	width:150px;
+	position: relative;
+  margin-top: -20px;
   top: 0;
 }
 
@@ -46,7 +46,6 @@ html, body {
 .navbar-nav>li>a {
   color: #4f1308;
   background-color: #eeede4;
-  padding: 10px;
 }
 
 .polaroid {
