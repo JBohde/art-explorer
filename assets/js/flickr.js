@@ -1,6 +1,5 @@
-$(document).ready(function() {
-
-  $("#photos-button").on("click", ".list-group-item", function(){
+  $("#photos-button").on("click", function(){
+    console.log("Photos!");
     $("#photos").empty();
     var search = $(this).text();
     console.log(search);
@@ -19,5 +18,4 @@ $(document).ready(function() {
     }).fail(function() {
       console.log("error occured accessing the Flickr API.")
     });
-    }); //click results from google
-});
+    });
