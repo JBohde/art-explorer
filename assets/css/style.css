@@ -12,10 +12,19 @@ html, body {
   width: 90%;
 }
 
-.content {
+.attachment {
   width: 95%;
   height: auto;
   margin: 0 auto;
+  padding: 10px;
+  position: relative;
+  background-color: white;
+}
+
+.content {
+  width: 95%;
+  height: auto;
+  margin: 0 auto 125px auto;
   padding: 10px;
   position: relative;
   background-color: white;
