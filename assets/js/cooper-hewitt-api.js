@@ -1,8 +1,4 @@
 $( document ).ready(function() {
-  $(".results-table").hide();
-  $("#resultsTable").hide();
-  
-  
     var config = {
     apiKey: "AIzaSyDyB-QLzbbYtDMixJ9eqppkC83aOjlNag0",
     authDomain: "artgalleryproject-92ef9.firebaseapp.com",
@@ -34,7 +30,7 @@ $( document ).ready(function() {
       for (var i = 0; i < 3; i++) {
         var artDiv = $("<div class='item'>");
         artDiv.attr("id", "image" + i)
-        // // Creating and storing an image tag
+        // Creating and storing an image tag
         var artImage = $("<img>");
         artImage.attr("src", response.objects[i].images[0].b.url);
         artImage.attr("class", "art");
@@ -45,7 +41,6 @@ $( document ).ready(function() {
         $('#slide-' + i).append(artDiv[0]);
         console.log(artDiv[0]);
       }
-      
     });
   });
 });
