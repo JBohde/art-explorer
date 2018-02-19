@@ -55,7 +55,7 @@ $( document ).ready(function() {
       newData = snapshot.val();
 
       function totalDisplay(i) {
-        var artHeading = $("<h4 class=media-heading>");
+        var artHeading = $("<h2 class=media-heading>");
         var artInfo = $("<div class=media-body>");
         artInfo.attr("id", "artInfo");
         var artDiv = $("<div class='panel-body'>");
@@ -116,7 +116,7 @@ $( document ).ready(function() {
           modalImage.attr("src", thisSource);
           $(".header-content").append(artHeading);
           $(".modal-body").append(modalImage);
-          $(".modal-body").append(artInfo);
+          $(".footer-content").append(artInfo);
           myModal.attr("class", "modal fade in");
           myModal.attr("style", "display: block");
         });
@@ -137,6 +137,7 @@ $( document ).ready(function() {
       isModalShowing = false;
       $(".header-content").empty();
       $(".modal-body").empty();
+      $(".footer-content").empty();
     });
 
   // Sets a event listnener for a new artist
@@ -146,6 +147,7 @@ $( document ).ready(function() {
     $(".item").empty();
     $(".header-content").empty();
     $(".modal-body").empty();
+    $(".footer-content").empty();
 
     const token = "2e2316873bca66e99bd915dbcb769c56";
     artist = $("#keyword-entry").val().trim();
