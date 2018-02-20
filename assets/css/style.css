@@ -38,6 +38,10 @@ html, body {
   top: 0;
 }
 
+.nav {
+  float: right;
+}
+
 .navbar, 
 .dropdown-toggle, 
 .navbar-default, 
@@ -46,6 +50,7 @@ html, body {
 .navbar-nav>li>a {
   color: #4f1308;
   background-color: #eeede4;
+  padding: 5px;
 }
 
 .polaroid {
