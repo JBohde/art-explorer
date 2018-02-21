@@ -42,6 +42,10 @@ html, body {
   float: right;
 }
 
+.form-control {
+  padding: 0;
+}
+
 .navbar, 
 .dropdown-toggle, 
 .navbar-default, 
@@ -51,6 +55,10 @@ html, body {
   color: #4f1308;
   background-color: #eeede4;
   padding: 5px;
+}
+
+.row {
+  margin: 5px 0 5px 0;
 }
 
 .polaroid {
@@ -82,6 +90,13 @@ html, body {
   cursor: pointer;
 }
 
+#flickr-image {
+  flex-shrink:0;
+    -webkit-flex-shrink: 0;
+    max-width:100%;
+    max-height: -webkit-fill-available;
+	margin:5px;
+}
 
 #modal-image {
   width: 100%;
@@ -94,7 +109,6 @@ html, body {
   max-width: 960px;
 }
 
-
 .header-content {
   float: center;
 }
@@ -106,6 +120,7 @@ html, body {
   text-align: left;
 }
 
+/* #listing, */
 .twitter-timeline {
   width: 250px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

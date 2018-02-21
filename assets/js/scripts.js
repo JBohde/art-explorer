@@ -14,6 +14,7 @@ $( document ).ready(function() {
     firebase.initializeApp(config);
   
   const dbRef = firebase.database().ref("Artist");
+  const dbBucket = firebase.database().ref("Bucket-List");
 
   var artImage;
   var participants;
@@ -26,6 +27,10 @@ $( document ).ready(function() {
   var info;
   var infoCard;
   var newData;
+
+  var bucketList = [];
+  var bucketModal = $("#bucket-list-modal");
+  var isBucketModalShowing = false;
 
   var myModal = $("#myModal");
   var modalImage;
@@ -48,7 +53,7 @@ $( document ).ready(function() {
       // }
       console.log(response);
       dbRef.set(response);
-    });
+  });
 
     dbRef.on("value", function(snapshot) {
 
@@ -130,14 +135,32 @@ $( document ).ready(function() {
 
     });
 
+    // $("#bucket-list").on("click", function(event) {
+    //   console.log("hello!");
+    //   // Capture user inputs and store them into variables
+    //   if(isBucketModalShowing) return;
+    //   isBucketModalShowing = true;
+    //   bucketModal.attr("class", "modal fade in");
+    //   bucketModal.attr("style", "display: block");
+    //   console.log(this.phone);
+    //   console.log(this.website);
+    // });
+
+    // $("#bucket-submit").on("click", function(event) {
+    //   // Console log each of the user inputs to confirm we are receiving them
+    //   var name = $("#name").val();
+    //   var email = $("#email").val();
+    //   console.log(name);
+    //   console.log(email);
+    //   dbBucket.push(name);
+    //   dbBucket.push(email);
+    //   });
+
      // Sets a listener for closing the modal and resetting parameters
     $(".close").on("click", function(){
-      myModal.attr("class", "modal fade out");
-      myModal.attr("style", "display: none");
-      isModalShowing = false;
-      $(".header-content").empty();
-      $(".modal-body").empty();
-      $(".footer-content").empty();
+      bucketModal.attr("class", "modal fade out");
+      bucketModal.attr("style", "display: none");
+      isBucketModalShowing = false;
     });
 
   // Sets a event listnener for a new artist

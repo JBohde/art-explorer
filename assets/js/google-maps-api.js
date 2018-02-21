@@ -75,7 +75,7 @@
     var cooperHewitt;
     var googleResults = [];
     var bucketList = [];
-    var myBucketModal = $("#myBucketListModal");
+    var bucketModal = $("#bucket-list-modal");
     var isBucketModalShowing = false;
       
     function callback(place, status) {
@@ -87,13 +87,12 @@
     var directionsDisplay;           
       
     function initMap() {
-      $(".google-map").show();
       map = new google.maps.Map(document.getElementById('map'), {
         zoom: countries['us'].zoom,
         center: countries['us'].center,
         mapTypeControl: false,
         panControl: false,
-        zoom: 4,
+        zoom: 3,
         streetViewControl: false
       });
       infoWindow = new google.maps.InfoWindow({
@@ -144,7 +143,7 @@
             clearMarkers();
             googleResults = results;
             // googleResults.unshift(cooperHewitt);
-            console.log(googleResults);
+            // console.log(googleResults);
             $("#results-table").fadeIn();
             // Create a marker for each museum found, and
             // assign a letter of the alphabetic to each marker icon.
@@ -160,7 +159,7 @@
               // If the user clicks a museum marker, show the details of that museum
               // in an info window.
               markers[i].placeResult = results[i];
-              google.maps.event.addListener(markers[i], 'click', showInfoWindow); //,getCurrentPosition, calculateAndDisplayRoute);
+              google.maps.event.addListener(markers[i], 'click', showInfoWindow);
               setTimeout(dropMarker(i), i * 100);
               addResult(results[i], i);
             }
@@ -239,66 +238,19 @@
       }
     }
         
-    // Get the place details for a museum. Show the information in an info window,
-    // anchored on the marker for the museum that the user selected.
-    function showInfoWindow() {
-      var marker = this;
-      places.getDetails({placeId: marker.placeResult.place_id},
-      function(place, status) {
-        if (status !== google.maps.places.PlacesServiceStatus.OK) {
-          return;
-        }
-        infoWindow.open(map, marker);
-        buildIWContent(place);
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            var userMarkerIcon = MARKER_PATH + '.png';
-            userMarker = new google.maps.Marker({
-              position: pos,
-              animation: google.maps.Animation.DROP,
-              icon: userMarkerIcon
-            });
-            userMarker.setPosition(pos);
-            // infoWindow.setContent('Current location.');
-            map.setCenter(marker.position.latitude, marker.position.longitude);        
-            function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-              var selectedMode = document.getElementById('mode').value;
-              places = new google.maps.places.PlacesService(map);
-              places.getDetails(request, callback);
-              directionsService.route({
-                origin: pos,
-                destination: marker.placeResult.vicinity,
-                // Note that Javascript allows us to access the constant
-                // using square brackets and a string value as its
-                // "property."
-                travelMode: google.maps.TravelMode[selectedMode]
-              }, function(response, status) {
-                if (status == 'OK') {
-                  directionsDisplay.setDirections(response);
-                } else {
-                  window.alert('Directions request failed due to ' + status);
-                }
-            });
-          }
-            calculateAndDisplayRoute(directionsService, directionsDisplay);
-            document.getElementById('mode').addEventListener('change', function() {
-            calculateAndDisplayRoute(directionsService, directionsDisplay);
-            });
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-          } else {
-         // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-          }
-          directionsDisplay.setMap(map);
-      });
-    }
+  // Get the place details for a museum. Show the information in an info window,
+  // anchored on the marker for the museum that the user selected.
+  function showInfoWindow() {
+    var marker = this;
+    places.getDetails({placeId: marker.placeResult.place_id},
+    function(place, status) {
+      if (status !== google.maps.places.PlacesServiceStatus.OK) {
+        return;
+      }
+      infoWindow.open(map, marker);
+      buildIWContent(place);
+    });
+  }
 
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       infoWindow.setPosition(pos);
@@ -319,55 +271,58 @@
       var bucketListIndex = bucketList.indexOf(place.id);
       // if the place ID's idex is not in array it will be -1
       if ( bucketListIndex < 0) {
-      // if place.id is negative this code runs
-      // document.getElementById('iw-bucketList-button').innerHTML = "<button type='button' name='button' class='btn btn-success' id='addToBucketList'>Add to list</button>";
-      //set on click event for add to list button
+        // if place.id is negative this code runs
+        // document.getElementById('iw-bucketList-button').innerHTML = "<button type='button' name='button' class='btn btn-success' id='addToBucketList'>Add to list</button>";
       }
-
-      // document.getElementById('addToBucketList').onclick = function() {
-      //   this.remove();
-      //   console.log("hello!");
-      //   // Capture user inputs and store them into variables
-      //   // if(isBucketModalShowing) return;
-      //   //   isBucketModalShowing = true;
-      //     myBucketModal.attr("class", "modal fade in");
-      //     myBucketModal.attr("style", "display: block");
-      //     document.getElementById('iw-bucketList-button').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
-      //     console.log(place.name);
-      //     bucketList.push(place.id);
-      //     console.log(bucketList);
-      //     // alreadyAdded = true;
-      //   }
+      //set on click event for add to list button
+      document.getElementById('bucket-list').onclick = function() {
+        this.remove();
+        if(isBucketModalShowing) return;
+          isBucketModalShowing = true;
+          bucketModal.attr("class", "modal fade in");
+          bucketModal.attr("style", "display: block");
+          // console.log(this.phone);
+          // console.log(this.website);
+          document.getElementById('iw-bucketList-button').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
+          console.log(place);
+          bucketList.push(place);
+          console.log(bucketList);
+          alreadyAdded = true;
+        }
       //   // } else {
       //   //   document.getElementById('iw-bucketList-button').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
       //   //   console.log('already added');  
 
+      document.getElementById('bucket-submit').onclick = function() {
+        // Console log each of the user inputs to confirm we are receiving them
+        var name = $("#name").val();
+        var email = $("#email").val();
+        console.log(name);
+        console.log(email);
+        // dbBucket.push(name);
+        // dbBucket.push(email);
+        }
   
-      // document.getElementById('photos-button').onclick = function() {
-      //   $("#photos").empty();
-      //   var search = $(this).text();
-      //   console.log(search);
-      //   var searchURL=  "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+      document.getElementById('photos-button').onclick = function() {
+        $("#photos").empty();
+        var search = place.name;
+        console.log(search);
+        var searchURL=  "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
     
-      //   $.getJSON(searchURL, {
-      //     tags: search,
-      //     tagmode: "any",
-      //     format: "json"
-      //   }).done(function(data) {
-      //     console.log(data);
-      //     $.each(data.items, function(index, item) {
-      //       // console.log(item)
-      //       $("<img>").attr("src", item.media.m).appendTo("#photos");
-      //     });
-      //   }).fail(function() {
-      //     console.log("error occured accessing the Flickr API.")
-      //   });
-      //   // document.getElementById('img-repo').innerHTML =
-      //   // "<h1>Hello World!</h1>"
-      //   // + "<div class='item' id='image-1'>"
-      //   // +   "<img class='thumbnail img-responsive' title='Image 11' src='http://dummyimage.com/600x350/ccc/969696'>"
-      //   // + "</div>";
-      // }
+        $.getJSON(searchURL, {
+          tags: search,
+          tagmode: "any",
+          format: "json"
+        }).done(function(data) {
+          console.log(data);
+          $.each(data.items, function(index, item) {
+            // console.log(item)
+            $("<img>").attr("src", item.media.m).attr("id", "flickr-image").appendTo("#photos");
+          });
+        }).fail(function() {
+          console.log("error occured accessing the Flickr API.")
+        });
+      }
         
       if (place.formatted_phone_number) {
         document.getElementById('iw-phone-row').style.display = '';
