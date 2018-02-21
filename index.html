@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/google-maps.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/bucketList.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/bucketList.css"> -->
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
     
     <!-- Moment.js Reference -->
@@ -65,11 +65,6 @@
                   <div class="item active" id="slide-0"></div>
                   <div class="item" id="slide-1"></div>
                   <div class="item" id="slide-2"></div>
-                  <!-- <div class="item" id="slide-3"></div>
-                  <div class="item" id="slide-4"></div>
-                  <div class="item" id="slide-5"></div>
-                  <div class="item" id="slide-6"></div>
-                  <div class="item" id="slide-7"></div> -->
                 </div>
                 <!-- Left and right controls -->
                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -83,10 +78,8 @@
               </div>
               <div class="attachment">
               <form class="form-inline">
-                <!-- <div class="form-group"> -->
                   <input type="text" class="form-control" id="keyword-entry" placeholder="Enter Keyword">
                   <button type="submit" class="btn btn-default" id="artist-submit">Submit</button>
-                <!-- </div> -->
               </form>
             </div>
             </div>
@@ -118,7 +111,6 @@
           <div class="google-map" id="map"></div>
         <div class="attachment">
           <form class="form-inline">
-            <div id="controls">
               <input type="text" class="form-control" id="autocomplete" placeholder="Where to?">
               <select class="form-control" id="country">
                 <option value="all">All</option>
@@ -136,7 +128,6 @@
                 <option value="us" selected>U.S.A.</option>
                 <option value="uk">United Kingdom</option>
               </select>
-            </div>
             <div id="locationField"></div>  
           </form>
           <!-- <div id="floating-panel">
@@ -202,11 +193,10 @@
             </div>
     </div>
       <div class="row">
-          <!-- <div class="col-md-8" id="photos"></div> -->
-
+          <div class="col-md-12" id="photos"></div>
       </div>
         <!-- Modal -->
-        <div class="modal fade" id="myBucketListModal" role="dialog">
+        <div class="modal fade" id="bucket-list-modal" role="dialog">
           <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -217,21 +207,21 @@
               <div class="modal-body">
                 <form class="form-inline">
                   <div class="form-group">
+                    <div class="form-group">
+                      <label for="pwd">Name:</label>
+                      <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+                    </div>
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
                   </div>
-                  <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-                  </div>
-                  <div class="checkbox">
+                  <!-- <div class="checkbox">
                     <label><input type="text" name="remember">Remember me</label>
-                  </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                  </div> -->
+                    <button type="submit" class="btn btn-default" id="bucket-submit">Submit</button>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default"data-dismiss="modal">Close</button>
+                <button type="button" class="close" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -240,49 +230,18 @@
     <!-- ****** ABOUT SECTION ***** -->
 
     <div class="row learn-more">
-      <div class ="row">
         <h2>The Team</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="media">
-            <div class="media-left">
-              <a href="#"><img class="media-object" src="assets\images\rupam.png" alt="Rupam"></a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading"><a href="https://github.com/rupamkumari24" target="_blank">Rupam Kumari</a></h4>
-              <i>Amazing text here about the incredible Rupam</i>
-              <br>
-              Rupam is represented, in pensive repose, in the oil on canvas painting <a href="https://www.google.com/culturalinstitute/beta/asset/hungarian-gypsy-girl/rwFjUY63de-jKA" target="_blank">"Hungarian Gypsy Girl"</a> by Amrita Sher-Gil in the National Gallery of Modern Art.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="media">
-            <div class="media-left">
-              <a href="#"><img class="media-object" src="assets\images\josh.png" alt="Josh"></a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading"><a href="https://github.com/JBohde" target="_blank">Joshua Bohde</a></h4>
-              <i>Cool words here about the indominable Joshua</i>
-              <br>
-              Joshua is represented in oil on canvas, in the painting <a href="https://commons.wikimedia.org/wiki/File:Thomas_Flintoff_-_Sam_Houston_-_Google_Art_Project.jpg" target="_blank">"Sam Houston"</a> by Thomas Flintoff in the Sam Houston Museum.                  </div>
-            </div>
-          </div>
-        </div>
         <div class="row">
           <div class="col-md-12">
             <div class="media">
               <div class="media-left">
-                <a href="#"><img class="media-object" src="assets\images\ryan.png" alt="Ryan"></a>
+                <a href="#"><img class="media-object" src="assets\images\rupam.png" alt="Rupam"></a>
               </div>
               <div class="media-body">
-                <h4 class="media-heading"><a href="https://github.com/rocsteady888" target="_blank">Ryan O'Connor</a></h4>
-                <i>Slick script here about the formidable Ryan</i>
+                <h4 class="media-heading"><a href="https://github.com/rupamkumari24" target="_blank">Rupam Kumari</a></h4>
+                <i>Amazing text here about the incredible Rupam</i>
                 <br>
-                Ryan is represented in oil on canvas, in the painting <a href="https://www.google.com/culturalinstitute/beta/asset/portrait-of-guilherme-de-almeida/4AGbVwuOKNyC8g" target="_blank">"Portrait of Guilherme de Almeida"</a> by Lasar Segall in the private collection of Sr. Almeida. 
+                Rupam is represented, in pensive repose, in the oil on canvas painting <a href="https://www.google.com/culturalinstitute/beta/asset/hungarian-gypsy-girl/rwFjUY63de-jKA" target="_blank">"Hungarian Gypsy Girl"</a> by Amrita Sher-Gil in the National Gallery of Modern Art.
               </div>
             </div>
           </div>
@@ -291,62 +250,88 @@
           <div class="col-md-12">
             <div class="media">
               <div class="media-left">
-                <a href="#"><img class="media-object" src="assets\images\melissa.png" alt="Melissa"></a>
+                <a href="#"><img class="media-object" src="assets\images\josh.png" alt="Josh"></a>
               </div>
               <div class="media-body">
-                <h4 class="media-heading"><a href="https://github.com/melissable" target="_blank">Melissa Capps</a></h4>
-                <i>Super content here about the powerhouse Melissa</i>
+                <h4 class="media-heading"><a href="https://github.com/JBohde" target="_blank">Joshua Bohde</a></h4>
+                <i>Cool words here about the indominable Joshua</i>
                 <br>
-                Melissa is represented, in a silk hat, in the anonymous sketch <a href="https://www.google.com/culturalinstitute/beta/asset/le-follet-courrier-des-salons-1836-no-500-chapeau-en-poult-de-soie/JgHyq4QtvoOD8Q" target="_blank">"Le Follet Courrier des Salons, 1836, No. 500: Chapeau un poult de soie"</a> in the Rijksmuseum. 
+                Joshua is represented in oil on canvas, in the painting <a href="https://commons.wikimedia.org/wiki/File:Thomas_Flintoff_-_Sam_Houston_-_Google_Art_Project.jpg" target="_blank">"Sam Houston"</a> by Thomas Flintoff in the Sam Houston Museum.                  </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="row faq">
-        <div class="col-md-12">
-          <h2>Frequently Asked Questions</h2>
-            <div id="accordion">
-
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    What museums are represented in this search?
-                    </button>
-                  </h5>
-                </div>      
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                  <div class="card-body">
-                    Currently, we work with the Smithsonian museums. We are developing additional museums and collections on a daily basis.
-                  </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#"><img class="media-object" src="assets\images\ryan.png" alt="Ryan"></a>
                 </div>
-
-              <div class="card">
-                <div class="card-header" id="headingTwo">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      How is the location calculated?
-                    </button>
-                  </h5>
+                <div class="media-body">
+                  <h4 class="media-heading"><a href="https://github.com/rocsteady888" target="_blank">Ryan O'Connor</a></h4>
+                  <i>Slick script here about the formidable Ryan</i>
+                  <br>
+                  Ryan is represented in oil on canvas, in the painting <a href="https://www.google.com/culturalinstitute/beta/asset/portrait-of-guilherme-de-almeida/4AGbVwuOKNyC8g" target="_blank">"Portrait of Guilherme de Almeida"</a> by Lasar Segall in the private collection of Sr. Almeida. 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#"><img class="media-object" src="assets\images\melissa.png" alt="Melissa"></a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading"><a href="https://github.com/melissable" target="_blank">Melissa Capps</a></h4>
+                  <i>Super content here about the powerhouse Melissa</i>
+                  <br>
+                  Melissa is represented, in a silk hat, in the anonymous sketch <a href="https://www.google.com/culturalinstitute/beta/asset/le-follet-courrier-des-salons-1836-no-500-chapeau-en-poult-de-soie/JgHyq4QtvoOD8Q" target="_blank">"Le Follet Courrier des Salons, 1836, No. 500: Chapeau un poult de soie"</a> in the Rijksmuseum. 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row faq">
+          <div class="col-md-12">
+            <h2>Frequently Asked Questions</h2>
+              <div id="accordion">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      What museums are represented in this search?
+                      </button>
+                    </h5>
+                  </div>      
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                      Currently, we work with the Smithsonian museums. We are developing additional museums and collections on a daily basis.
+                    </div>
+                  </div>
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        How is the location calculated?
+                      </button>
+                    </h5>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                   <div class="card-body">
                     The location is figured out based on the zip code or city/state you provided in the search, based off of the Google Map data. Some distances may vary, depending on the accuracy of the Google data.                      </div>
                   </div>
                 </div>
-
-              <div class="card">
-                <div class="card-header" id="headingThree">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      How can I save the art pieces I want to visit?
-                    </button>
-                  </h5>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                  <div class="card-body">
-                    You can add them to your Google Map. Plus, coming soon, we'll be linking with TripAdvisor, so you can add it to your trip.
+                <div class="card">
+                  <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        How can I save the art pieces I want to visit?
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                      You can add them to your Google Map. Plus, coming soon, we'll be linking with TripAdvisor, so you can add it to your trip.
                   </div>
                 </div>
               </div>
@@ -372,7 +357,7 @@
       
 
     <!-- App Script -->
-    <script type="text/javascript" src="assets/js/flickr.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/flickr.js"></script> -->
     <script type="text/javascript" src="assets/js/lightbox.js"></script>
     <script type="text/javascript" src="assets/js/wishlist.js"></script>
     <!-- <script src="assets/js/bucketList.js"></script> -->
