@@ -82,7 +82,7 @@
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         ch = place;
         console.log(ch);
-        document.getElementById('gallery-info').innerHTML = ch.name + "<br>" + ch.formatted_address + "<br>" + ch.formatted_phone_number + "<br>" + ch.website;
+        document.getElementById('gallery-info').innerHTML =  "*touch image for more info" + "<br>" + "<br>" + ch.name + "<br>" + ch.formatted_address + "<br>" + ch.formatted_phone_number + "<br>" + ch.website;
       }
     }
     var directionsService;
@@ -290,6 +290,18 @@
           bucketList.push(place);
           console.log(bucketList);
           alreadyAdded = true;
+          // <form class="form-inline">
+          // <div class="form-group">
+          //   <div class="form-group">
+          //     <label for="pwd">Name:</label>
+          //     <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+          //   </div>
+          //   <label for="email">Email:</label>
+          //   <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+          // </div>
+          // <div class="checkbox">
+          //   <label><input type="text" name="remember">Remember me</label>
+          // </div>
       }
         // } else {
         //    document.getElementById('bucket-list').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
