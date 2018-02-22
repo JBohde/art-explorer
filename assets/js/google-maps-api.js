@@ -72,17 +72,17 @@
     var request = {
       placeId: 'ChIJsT8qSaJYwokR-m20OGJUKCA'
     };
-    var cooperHewitt;
+    var ch;
     var googleResults = [];
     var bucketList = [];
-    var bucketModal = $("#bucket-list-modal");
-    var isBucketModalShowing = false;
+    var myModal = $("#myModal");
+    var isModalShowing = false;
       
     function callback(place, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        cooperHewitt = place;
-        console.log(cooperHewitt);
-        // showInfoWindow(cooperHewitt);
+        ch = place;
+        console.log(ch);
+        document.getElementById('gallery-info').innerHTML = ch.name + "<br>" + ch.formatted_address + "<br>" + ch.formatted_phone_number + "<br>" + ch.website;
       }
     }
     var directionsService;
@@ -144,7 +144,7 @@
             clearResults();
             clearMarkers();
             googleResults = results;
-            // googleResults.unshift(cooperHewitt);
+            // googleResults.unshift(ch);
             // console.log(googleResults);
             $("#results-table").fadeIn();
             // Create a marker for each museum found, and
@@ -274,36 +274,37 @@
       // if the place ID's idex is not in array it will be -1
       if ( bucketListIndex < 0) {
         // if place.id is negative this code runs
-        // document.getElementById('iw-bucketList-button').innerHTML = "<button type='button' name='button' class='btn btn-success' id='addToBucketList'>Add to list</button>";
+        // document.getElementById('bucket-list').innerHTML = "<button type='button' name='button' class='btn btn-success' id='addToBucketList'>Add to list</button>";
       }
       //set on click event for add to list button
       document.getElementById('bucket-list').onclick = function() {
-        this.remove();
-        if(isBucketModalShowing) return;
-          isBucketModalShowing = true;
-          bucketModal.attr("class", "modal fade in");
-          bucketModal.attr("style", "display: block");
-          // console.log(this.phone);
-          // console.log(this.website);
-          document.getElementById('iw-bucketList-button').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
+        // this.remove();
+        if(isModalShowing) return;
+          isModalShowing = true;
+          myModal.attr("class", "modal fade in");
+          myModal.attr("style", "display: block");
+          $(".header-content").append("Bucket List");
+          $(".modal-body").append("CONTENT HERE");
+          document.getElementById('bucket-list').innerHTML = 'Added!';
           console.log(place);
           bucketList.push(place);
           console.log(bucketList);
           alreadyAdded = true;
-        }
-      //   // } else {
-      //   //   document.getElementById('iw-bucketList-button').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
-      //   //   console.log('already added');  
+      }
+        // } else {
+        //    document.getElementById('bucket-list').innerHTML = '<div class="alert alert-success" role="alert">Added!</div>';
+        //    console.log('already added');
+        // }
 
-      document.getElementById('bucket-submit').onclick = function() {
+      // document.getElementById('bucket-submit').onclick = function() {
         // Console log each of the user inputs to confirm we are receiving them
-        var name = $("#name").val();
-        var email = $("#email").val();
-        console.log(name);
-        console.log(email);
+        // var name = $("#name").val();
+        // var email = $("#email").val();
+        // console.log(name);
+        // console.log(email);
         // dbBucket.push(name);
         // dbBucket.push(email);
-        }
+      // }
   
       document.getElementById('photos-button').onclick = function() {
         $("#photos").empty();
