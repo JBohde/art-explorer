@@ -81,6 +81,8 @@
     function callback(place, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         cooperHewitt = place;
+        console.log(cooperHewitt);
+        // showInfoWindow(cooperHewitt);
       }
     }
     var directionsService;
