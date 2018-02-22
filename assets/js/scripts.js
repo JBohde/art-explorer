@@ -158,20 +158,22 @@ $( document ).ready(function() {
 
      // Sets a listener for closing the modal and resetting parameters
     $(".close").on("click", function(){
+      $(".header-content").empty();
+      $(".modal-body").empty();
+      $(".footer-content").empty();
+      myModal.attr("class", "modal fade out");
+      myModal.attr("style", "display: none");
       bucketModal.attr("class", "modal fade out");
       bucketModal.attr("style", "display: none");
+      isModalShowing = false;
       isBucketModalShowing = false;
     });
 
   // Sets a event listnener for a new artist
   $("#artist-submit").on("click", function(event) {
     event.preventDefault();
-    
     $(".item").empty();
-    $(".header-content").empty();
-    $(".modal-body").empty();
-    $(".footer-content").empty();
-
+    
     const token = "2e2316873bca66e99bd915dbcb769c56";
     artist = $("#keyword-entry").val().trim();
     let queryURL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.exhibitions.getObjects&access_token=" + token + "&query=" + artist;
