@@ -13,11 +13,7 @@ html, body {
 }
 
 .attachment {
-  width: 95%;
-  height: auto;
-  margin: 0 auto;
   padding: 10px;
-  position: relative;
   background-color: white;
 }
 
@@ -41,10 +37,6 @@ html, body {
   float: right;
 }
 
-.form-control {
-  padding: 0;
-}
-
 .navbar, 
 .dropdown-toggle, 
 .navbar-default, 
@@ -58,6 +50,10 @@ html, body {
 
 .row {
   margin: 5px 0 5px 0;
+}
+
+#gallery-info {
+  padding: 10px;
 }
 
 .polaroid {
@@ -145,6 +141,7 @@ html, body {
 
 .btn-primary {
   background-color: #96958c;
+  margin: 5px;
 }
 
 .btn-primary:hover {
