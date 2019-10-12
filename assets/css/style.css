@@ -23,6 +23,7 @@ html, body {
   margin: 0 auto 125px auto;
   position: relative;
   background-color: white;
+  border-radius: .625rem;
 }
 
 #Logo{
@@ -37,11 +38,11 @@ html, body {
   float: right;
 }
 
-.navbar, 
-.dropdown-toggle, 
-.navbar-default, 
-.navbar-fixed-bottom, 
-.navbar-default, 
+.navbar,
+.dropdown-toggle,
+.navbar-default,
+.navbar-fixed-bottom,
+.navbar-default,
 .navbar-nav>li>a {
   color: #4f1308;
   background-color: #eeede4;
@@ -64,11 +65,11 @@ html, body {
   width: 100%;
   height: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: .625rem;
   text-align: center;
   margin: 0 0 10px 0;
   padding: 5px;
   position: relative;
-  
 }
 
 .item {

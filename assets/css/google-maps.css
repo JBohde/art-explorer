@@ -8,11 +8,11 @@ table {
   width:  100%;
   border-collapse: collapse;
 }
-  
+
 td {
   padding: 5px;
   cursor: pointer;}
-      
+
 #floating-panel {
   margin-bottom: 5px;
 }
